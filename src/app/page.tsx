@@ -15,11 +15,11 @@ export default function Home() {
       <Hero />
       <CommandCenter />
       <HowItWorks />
-      <Features />
-      <AgentPipeline />
+      {/* <AgentPipeline /> */}
       <ThreeWays />
       <OpenSource />
       <CookbookTeaser />
+      <Features />
       <Pricing />
       <CtaBanner />
     </>
