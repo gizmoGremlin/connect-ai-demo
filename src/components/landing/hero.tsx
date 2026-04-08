@@ -6,12 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Zap,
-  Camera,
-  Sun,
-  TrendingDown,
-  MessageCircle,
-  BookOpen,
-  ImageIcon,
+  Volume2,
+  Hand,
+  Eye,
+  CheckCircle2,
   Shield,
   Cpu,
   Code2,
@@ -21,64 +19,63 @@ import { cn } from "@/lib/utils";
 import { LandingTrace } from "./landing-trace";
 import { scenarios } from "@/data/landing-trace-scenarios";
 
-const demoSkills = [
+const heroExecSteps = [
   {
-    icon: Camera,
-    name: "Post to Instagram",
-    desc: "Share your latest photo",
-    color: "text-blue-400",
-    bg: "bg-blue-500/10",
+    icon: Volume2,
+    label: "Voice Control active",
+    action: 'Opening "Photos"...',
+    screen: "photos",
   },
   {
-    icon: Sun,
-    name: "Morning Briefing",
-    desc: "Weather, news, and your schedule",
-    color: "text-cyan-400",
-    bg: "bg-cyan-500/10",
+    icon: Hand,
+    label: "Voice Control active",
+    action: 'Tapping "Share"...',
+    screen: "share",
   },
   {
-    icon: TrendingDown,
-    name: "Track Prices",
-    desc: "Get alerts when prices drop",
-    color: "text-teal-400",
-    bg: "bg-teal-500/10",
+    icon: Eye,
+    label: "Analyzing screen",
+    action: "Generating caption...",
+    screen: "instagram",
   },
   {
-    icon: MessageCircle,
-    name: "Send a Check-In",
-    desc: "Text your favorites good morning",
-    color: "text-blue-400",
-    bg: "bg-blue-500/10",
-  },
-  {
-    icon: BookOpen,
-    name: "Research Topics",
-    desc: "Search and save articles",
-    color: "text-cyan-400",
-    bg: "bg-cyan-500/10",
-  },
-  {
-    icon: ImageIcon,
-    name: "Backup Photos",
-    desc: "Save camera roll to cloud",
-    color: "text-teal-400",
-    bg: "bg-teal-500/10",
+    icon: CheckCircle2,
+    label: "Complete",
+    action: "Posted with AI caption",
+    screen: "done",
   },
 ];
 
 const heroScenarios = scenarios.slice(0, 3);
+
+function HeroFlowConnector() {
+  return (
+    <svg width="32" height="4" className="overflow-visible shrink-0">
+      <line
+        x1="0" y1="2" x2="32" y2="2"
+        stroke="#3f3f46" strokeWidth="1.5" strokeDasharray="4 3"
+      />
+      <motion.circle
+        cy="2" r="2" fill="#22d3ee"
+        animate={{ cx: [0, 32], opacity: [0, 1, 1, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+      />
+    </svg>
+  );
+}
 
 function PhoneDemo() {
   const [step, setStep] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setStep((s) => (s + 1) % demoSkills.length);
-    }, 2500);
+      setStep((s) => (s + 1) % heroExecSteps.length);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const current = demoSkills[step];
+  const current = heroExecSteps[step];
+  const isDone = current.screen === "done";
 
   return (
     <div className="relative">
@@ -87,7 +84,7 @@ function PhoneDemo() {
         {/* Ambient glow */}
         <div className="absolute -inset-4 rounded-[3rem] bg-blue-500/5 blur-2xl" />
 
-        {/* iPhone frame — edge-to-edge, minimal bezel */}
+        {/* iPhone frame */}
         <div className="relative rounded-[2.5rem] border border-zinc-600/50 bg-zinc-900 p-[3px] shadow-2xl shadow-black/50 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
           {/* Side buttons */}
           <div className="absolute -right-[3px] top-[110px] w-[3px] h-[36px] rounded-full bg-zinc-700/60" />
@@ -95,51 +92,117 @@ function PhoneDemo() {
           <div className="absolute -left-[3px] top-[120px] w-[3px] h-[20px] rounded-full bg-zinc-700/60" />
 
           {/* Screen */}
-          <div className="relative h-[400px] sm:h-[420px] rounded-[2.25rem] bg-black overflow-hidden flex flex-col items-center justify-center">
+          <div className="relative h-[400px] sm:h-[420px] rounded-[2.25rem] bg-black overflow-hidden flex flex-col">
             {/* Dynamic Island */}
             <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 h-[20px] w-[76px] rounded-full bg-black border border-zinc-800" />
 
-            {/* Skill content */}
-            <AnimatePresence mode="wait">
+            {/* Voice Control indicator */}
+            <div className="mt-12 mx-4 flex items-center gap-2 rounded-lg bg-zinc-900/80 px-2.5 py-1.5">
               <motion.div
-                key={step}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.35 }}
-                className="flex flex-col items-center gap-3 text-center px-4"
-              >
-                <div
-                  className={cn(
-                    "flex h-14 w-14 items-center justify-center rounded-2xl",
-                    current.bg
-                  )}
-                >
-                  <current.icon className={cn("h-7 w-7", current.color)} />
-                </div>
-                <div>
-                  <p className="text-base font-semibold text-zinc-100">
-                    {current.name}
-                  </p>
-                  <p className="mt-1 text-xs text-zinc-500">{current.desc}</p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Pagination dots */}
-            <div className="absolute bottom-8 flex gap-1.5">
-              {demoSkills.map((_, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    "h-1.5 rounded-full transition-all duration-300",
-                    i === step ? "w-4 bg-cyan-400" : "w-1.5 bg-zinc-700"
-                  )}
-                />
-              ))}
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="h-1.5 w-1.5 rounded-full bg-teal-400"
+              />
+              <span className="text-[9px] font-mono text-teal-400">
+                {current.label}
+              </span>
             </div>
 
-            {/* Home indicator — on screen like real iOS */}
+            {/* Simulated app screen */}
+            <div className="flex-1 mx-4 mt-2 rounded-lg bg-zinc-900/40 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.screen}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
+                >
+                  {current.screen === "photos" && (
+                    <div className="grid grid-cols-3 gap-px p-px h-full">
+                      {Array.from({ length: 9 }).map((_, i) => (
+                        <div
+                          key={i}
+                          className={
+                            i === 0
+                              ? "bg-blue-500/20 border border-blue-500/40"
+                              : "bg-zinc-800/60"
+                          }
+                        />
+                      ))}
+                    </div>
+                  )}
+                  {current.screen === "share" && (
+                    <div className="flex flex-col items-center justify-center h-full gap-2.5 p-4">
+                      <div className="w-full h-20 rounded-lg bg-blue-500/15" />
+                      <div className="flex gap-2 w-full">
+                        {["bg-blue-500/20", "bg-cyan-500/20", "bg-teal-500/20"].map(
+                          (bg, i) => (
+                            <div
+                              key={i}
+                              className={`flex-1 h-10 rounded-lg ${bg} ${
+                                i === 0 ? "border border-cyan-500/40" : ""
+                              }`}
+                            />
+                          )
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  {current.screen === "instagram" && (
+                    <div className="flex flex-col h-full p-4 gap-2.5">
+                      <div className="w-full flex-1 rounded-lg bg-blue-500/15" />
+                      <div className="space-y-1.5">
+                        <div className="h-2.5 w-3/4 rounded bg-zinc-700/60" />
+                        <div className="h-2.5 w-1/2 rounded bg-cyan-500/20" />
+                      </div>
+                    </div>
+                  )}
+                  {current.screen === "done" && (
+                    <div className="flex flex-col items-center justify-center h-full gap-2">
+                      <CheckCircle2 className="h-10 w-10 text-teal-400" />
+                      <span className="text-xs font-mono text-teal-400">
+                        Posted
+                      </span>
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Action overlay */}
+            <div className="mx-4 mb-4 mt-2">
+              <div
+                className={cn(
+                  "flex items-center gap-2 rounded-lg px-2.5 py-2",
+                  isDone
+                    ? "bg-teal-500/10 border border-teal-500/20"
+                    : "bg-zinc-900/80 border border-zinc-800/60"
+                )}
+              >
+                {isDone ? (
+                  <CheckCircle2 className="h-3 w-3 text-teal-400 shrink-0" />
+                ) : (
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  >
+                    <div className="h-3 w-3 rounded-full border border-blue-400 border-t-transparent" />
+                  </motion.div>
+                )}
+                <span
+                  className={cn(
+                    "text-[9px] font-mono",
+                    isDone ? "text-teal-400" : "text-zinc-400"
+                  )}
+                >
+                  {current.action}
+                </span>
+              </div>
+            </div>
+
+            {/* Home indicator */}
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 h-[5px] w-[100px] rounded-full bg-zinc-600/50" />
           </div>
         </div>
@@ -147,7 +210,6 @@ function PhoneDemo() {
         {/* USB-C connection point */}
         <div className="absolute -bottom-[10px] left-1/2 -translate-x-1/2 flex flex-col items-center">
           <div className="w-[2px] h-[10px] bg-zinc-600 rounded-full" />
-          {/* Connection glow */}
           <motion.div
             animate={{ opacity: [0.3, 0.8, 0.3] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -162,18 +224,20 @@ function PhoneDemo() {
             <span className="text-[10px] font-mono font-medium text-zinc-300 tracking-wider">
               CNCT
             </span>
-            {/* Connected indicator */}
             <motion.div
               animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-emerald-400 border border-zinc-800"
+              className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-teal-400 border border-zinc-800"
             />
           </div>
         </div>
       </div>
 
-      {/* Trace overlay — overlaps phone mid-right, clears the device below */}
-      <div className="hidden sm:block absolute top-1/4 left-[70%] z-10">
+      {/* Trace + connector overlay — desktop only */}
+      <div className="hidden sm:flex items-start gap-1 absolute top-1/4 left-[58%] z-10">
+        <div className="mt-14">
+          <HeroFlowConnector />
+        </div>
         <LandingTrace
           scenarios={heroScenarios}
           trigger="auto"
