@@ -522,6 +522,39 @@ function ExecutionPhone() {
   );
 }
 
+/* ── Animated ctrl key with rotating border ── */
+function CtrlKey() {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: false, amount: 1 });
+
+  return (
+    <span ref={ref} className="relative inline-flex items-center">
+      {/* Rotating gradient border */}
+      <span
+        className="absolute -inset-[1px] rounded-[5px] opacity-0 transition-opacity duration-500"
+        style={{
+          opacity: inView ? 1 : 0,
+          background: "conic-gradient(from var(--border-angle, 0deg), #3b82f6, #22d3ee, #14b8a6, #3b82f6)",
+          animation: inView ? "border-spin 2.5s linear infinite" : "none",
+        }}
+      />
+      <span className="relative inline-flex items-center rounded-[4px] bg-gradient-to-b from-zinc-600 to-zinc-700 px-1.5 py-0.5 font-mono text-sm leading-none text-zinc-300 shadow-[0_2px_0_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.08)]">
+        ctrl
+      </span>
+      <style jsx>{`
+        @property --border-angle {
+          syntax: "<angle>";
+          initial-value: 0deg;
+          inherits: false;
+        }
+        @keyframes border-spin {
+          to { --border-angle: 360deg; }
+        }
+      `}</style>
+    </span>
+  );
+}
+
 /* ── Main Section ── */
 export function CommandCenter() {
   return (
@@ -539,10 +572,7 @@ export function CommandCenter() {
             Your AI, Running the Show
           </h2>
           <p className="mt-4 mx-auto max-w-2xl text-lg text-muted-foreground">
-            The{" "}
-            <span className="inline-flex items-center rounded-[4px] border border-zinc-500/60 bg-gradient-to-b from-zinc-600 to-zinc-700 px-1.5 py-0.5 font-mono text-sm leading-none text-zinc-300 shadow-[0_2px_0_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.08)]">
-              ctrl
-            </span>{" "}
+            The <CtrlKey />{" "}
             center is where your agent thinks, plans, and acts. Watch it grab a
             skill and send commands to your phone — in real time.
           </p>
