@@ -1,3 +1,6 @@
+let callCount = 0;
+const MAX_CALLS = 100;
+
 export async function POST(request: Request) {
   try {
     const { text } = await request.json();
@@ -5,6 +8,14 @@ export async function POST(request: Request) {
     if (!text || typeof text !== "string") {
       return Response.json({ error: "Missing 'text' field" }, { status: 400 });
     }
+
+    if (callCount >= MAX_CALLS) {
+      return Response.json(
+        { error: "TTS limit reached for this session" },
+        { status: 429 }
+      );
+    }
+    callCount++;
 
     const apiKey = process.env.VOICE_AI_API_KEY;
     if (!apiKey) {
