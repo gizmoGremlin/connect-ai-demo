@@ -126,7 +126,10 @@ export default function V2Layout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="force-light bg-white text-gray-900" style={{ colorScheme: "light" }}>
+    <div
+      className="force-light fixed inset-0 z-50 overflow-y-auto bg-white text-gray-900"
+      style={{ colorScheme: "light" }}
+    >
       <NavbarV2 />
       <main>{children}</main>
       <FooterV2 />
