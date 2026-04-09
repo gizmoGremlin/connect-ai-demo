@@ -13,7 +13,7 @@ const pressLogos = [
 
 export function SocialProof() {
   return (
-    <section className="relative border-y border-zinc-800/60 bg-zinc-950">
+    <section className="relative border-y border-gray-200 bg-gray-50">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:py-12">
         <motion.div
           initial={{ opacity: 0 }}
@@ -31,24 +31,23 @@ export function SocialProof() {
                   className="h-4 w-4 fill-amber-400 text-amber-400"
                 />
               ))}
-              <span className="ml-2 text-sm font-medium text-zinc-300">
+              <span className="ml-2 text-sm font-medium text-gray-900">
                 4.9
               </span>
             </div>
-            <p className="text-xs text-zinc-500">
+            <p className="text-xs text-gray-500">
               Rated by 2,400+ early adopters
             </p>
           </div>
 
           {/* Press logos — placeholders */}
-          {/* ARTLIST: Replace with actual press/brand logo images */}
           <div className="flex items-center gap-8 overflow-x-auto">
             {pressLogos.map((logo) => (
               <div
                 key={logo.name}
                 className={`${logo.width} h-6 shrink-0 flex items-center justify-center`}
               >
-                <span className="text-xs font-semibold tracking-wider text-zinc-600 uppercase">
+                <span className="text-xs font-semibold tracking-wider text-gray-300 uppercase">
                   {logo.name}
                 </span>
               </div>

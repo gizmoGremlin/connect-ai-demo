@@ -8,7 +8,7 @@ const testimonials = [
     name: "Sarah K.",
     role: "Content Creator",
     avatar: "SK",
-    color: "bg-pink-500/20 text-pink-400",
+    color: "bg-pink-100 text-pink-600",
     stars: 5,
     text: "I used to spend 45 minutes a day posting across platforms. Now I describe what I want and go make coffee. This thing is unreal.",
   },
@@ -16,7 +16,7 @@ const testimonials = [
     name: "Marcus T.",
     role: "Small Business Owner",
     avatar: "MT",
-    color: "bg-blue-500/20 text-blue-400",
+    color: "bg-blue-100 text-blue-600",
     stars: 5,
     text: "Price monitoring alone saved me hundreds last month. Set it up once, forget it. Alerts come in like magic.",
   },
@@ -24,7 +24,7 @@ const testimonials = [
     name: "Priya R.",
     role: "Graduate Student",
     avatar: "PR",
-    color: "bg-violet-500/20 text-violet-400",
+    color: "bg-violet-100 text-violet-600",
     stars: 5,
     text: "I have an old iPhone just for this now. It backs up my research, sends reminders, and organizes my notes. Best $99 I ever spent.",
   },
@@ -32,7 +32,7 @@ const testimonials = [
     name: "James L.",
     role: "Real Estate Agent",
     avatar: "JL",
-    color: "bg-emerald-500/20 text-emerald-400",
+    color: "bg-emerald-100 text-emerald-600",
     stars: 5,
     text: "I schedule showing confirmations, follow up with clients, and post listings — all automated. My colleagues think I have an assistant.",
   },
@@ -40,7 +40,7 @@ const testimonials = [
     name: "Emma D.",
     role: "Freelance Designer",
     avatar: "ED",
-    color: "bg-amber-500/20 text-amber-400",
+    color: "bg-amber-100 text-amber-600",
     stars: 4,
     text: "The community scripts are amazing. Found one that auto-saves design inspiration from Instagram to my Pinterest boards. Brilliant.",
   },
@@ -48,7 +48,7 @@ const testimonials = [
     name: "Alex W.",
     role: "Developer",
     avatar: "AW",
-    color: "bg-cyan-500/20 text-cyan-400",
+    color: "bg-cyan-100 text-cyan-600",
     stars: 5,
     text: "Open source scripting language sold me. I've written custom scripts that no other automation tool could handle. The .connect DSL is elegant.",
   },
@@ -56,7 +56,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="border-t border-zinc-800/60 bg-zinc-950 py-20 sm:py-28">
+    <section className="border-t border-gray-200 bg-gray-50 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -65,10 +65,10 @@ export function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             People Are Obsessed
           </h2>
-          <p className="mt-4 text-lg text-zinc-400">
+          <p className="mt-4 text-lg text-gray-500">
             Don&apos;t take our word for it.
           </p>
         </motion.div>
@@ -81,7 +81,7 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6"
+              className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
             >
               <div className="flex items-center gap-1">
                 {Array.from({ length: 5 }).map((_, j) => (
@@ -90,28 +90,27 @@ export function Testimonials() {
                     className={`h-3.5 w-3.5 ${
                       j < t.stars
                         ? "fill-amber-400 text-amber-400"
-                        : "text-zinc-700"
+                        : "text-gray-200"
                     }`}
                   />
                 ))}
               </div>
 
-              <p className="mt-4 text-sm text-zinc-300 leading-relaxed">
+              <p className="mt-4 text-sm text-gray-600 leading-relaxed">
                 &ldquo;{t.text}&rdquo;
               </p>
 
               <div className="mt-5 flex items-center gap-3">
-                {/* ARTLIST: Replace avatar initials with real portrait photos */}
                 <div
                   className={`flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold ${t.color}`}
                 >
                   {t.avatar}
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-zinc-200">
+                  <p className="text-sm font-medium text-gray-900">
                     {t.name}
                   </p>
-                  <p className="text-xs text-zinc-500">{t.role}</p>
+                  <p className="text-xs text-gray-400">{t.role}</p>
                 </div>
               </div>
             </motion.div>

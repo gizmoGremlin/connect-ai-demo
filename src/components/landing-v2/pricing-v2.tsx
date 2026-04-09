@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function PricingV2() {
   return (
-    <section className="border-t border-zinc-800/60 bg-zinc-900/50 py-20 sm:py-28">
+    <section id="pricing" className="border-t border-gray-200 bg-gray-50 py-20 sm:py-28 scroll-mt-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -17,10 +17,10 @@ export function PricingV2() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             One Device. One Price.
           </h2>
-          <p className="mt-4 text-lg text-zinc-400">
+          <p className="mt-4 text-lg text-gray-500">
             No hidden fees. No contracts. Just plug in and go.
           </p>
         </motion.div>
@@ -33,15 +33,15 @@ export function PricingV2() {
           className="mt-14 grid gap-6 sm:grid-cols-2"
         >
           {/* Device */}
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8">
-            <p className="text-sm font-medium text-zinc-400 uppercase tracking-wider">
+          <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+            <p className="text-sm font-medium text-gray-400 uppercase tracking-wider">
               The Device
             </p>
             <div className="mt-4 flex items-baseline gap-1">
-              <span className="text-5xl font-bold text-zinc-100">$99</span>
-              <span className="text-sm text-zinc-500">one-time</span>
+              <span className="text-5xl font-bold text-gray-900">$99</span>
+              <span className="text-sm text-gray-400">one-time</span>
             </div>
-            <p className="mt-3 text-sm text-zinc-500">
+            <p className="mt-3 text-sm text-gray-500">
               Everything you need to start automating.
             </p>
 
@@ -56,9 +56,9 @@ export function PricingV2() {
               ].map((f) => (
                 <li
                   key={f}
-                  className="flex items-center gap-3 text-sm text-zinc-300"
+                  className="flex items-center gap-3 text-sm text-gray-600"
                 >
-                  <Check className="h-4 w-4 text-zinc-500 shrink-0" />
+                  <Check className="h-4 w-4 text-gray-400 shrink-0" />
                   {f}
                 </li>
               ))}
@@ -68,7 +68,7 @@ export function PricingV2() {
               href="/signup"
               className={cn(
                 buttonVariants({ variant: "outline" }),
-                "mt-8 w-full gap-2"
+                "mt-8 w-full gap-2 border-gray-300 text-gray-700 hover:bg-gray-50"
               )}
             >
               Order Now
@@ -77,21 +77,21 @@ export function PricingV2() {
           </div>
 
           {/* Cloud */}
-          <div className="relative rounded-2xl border border-blue-500/30 bg-blue-500/5 p-8">
-            <div className="absolute -top-3 right-6 rounded-full bg-blue-500 px-3 py-0.5 text-xs font-semibold text-white">
+          <div className="relative rounded-2xl border-2 border-gray-900 bg-white p-8 shadow-sm">
+            <div className="absolute -top-3 right-6 rounded-full bg-gray-900 px-3 py-0.5 text-xs font-semibold text-white">
               Recommended
             </div>
 
-            <p className="text-sm font-medium text-blue-400 uppercase tracking-wider">
+            <p className="text-sm font-medium text-blue-600 uppercase tracking-wider">
               Device + Cloud
             </p>
             <div className="mt-4 flex items-baseline gap-1">
-              <span className="text-5xl font-bold text-zinc-100">$99</span>
-              <span className="text-sm text-zinc-500">
-                + $5<span className="text-zinc-600">/mo</span>
+              <span className="text-5xl font-bold text-gray-900">$99</span>
+              <span className="text-sm text-gray-400">
+                + $5<span className="text-gray-300">/mo</span>
               </span>
             </div>
-            <p className="mt-3 text-sm text-zinc-500">
+            <p className="mt-3 text-sm text-gray-500">
               Unlock the full AI-powered experience.
             </p>
 
@@ -106,9 +106,9 @@ export function PricingV2() {
               ].map((f) => (
                 <li
                   key={f}
-                  className="flex items-center gap-3 text-sm text-zinc-300"
+                  className="flex items-center gap-3 text-sm text-gray-600"
                 >
-                  <Check className="h-4 w-4 text-blue-400 shrink-0" />
+                  <Check className="h-4 w-4 text-blue-500 shrink-0" />
                   {f}
                 </li>
               ))}
@@ -116,7 +116,10 @@ export function PricingV2() {
 
             <Link
               href="/signup"
-              className={cn(buttonVariants(), "mt-8 w-full gap-2")}
+              className={cn(
+                buttonVariants(),
+                "mt-8 w-full gap-2 bg-gray-900 text-white hover:bg-gray-800"
+              )}
             >
               Get Started
               <ArrowRight className="h-4 w-4" />

@@ -16,7 +16,7 @@ const specs = [
 
 export function Specs() {
   return (
-    <section className="border-t border-zinc-800/60 bg-zinc-900/50 py-20 sm:py-28">
+    <section className="border-t border-gray-200 bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Product image */}
@@ -27,11 +27,8 @@ export function Specs() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            {/* ARTLIST: Replace with a high-res studio shot of the device
-                from a different angle — maybe top-down or three-quarter view.
-                Clean white/grey background, dramatic lighting. */}
+            {/* ARTLIST: product-angle-top — top-down or alt angle product shot */}
             <div className="relative overflow-hidden rounded-2xl">
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 blur-3xl" />
               <Image
                 src="/connect-product.png"
                 alt="Connect AI device specifications"
@@ -49,22 +46,22 @@ export function Specs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Built to Disappear
             </h2>
-            <p className="mt-4 text-lg text-zinc-400 leading-relaxed">
+            <p className="mt-4 text-lg text-gray-500 leading-relaxed">
               Small enough to forget it&apos;s there. Powerful enough to change
               how you use your phone.
             </p>
 
-            <div className="mt-10 space-y-0 divide-y divide-zinc-800">
+            <div className="mt-10 space-y-0 divide-y divide-gray-200">
               {specs.map((spec) => (
                 <div
                   key={spec.label}
                   className="flex items-center justify-between py-3.5"
                 >
-                  <span className="text-sm text-zinc-500">{spec.label}</span>
-                  <span className="text-sm font-medium text-zinc-200">
+                  <span className="text-sm text-gray-400">{spec.label}</span>
+                  <span className="text-sm font-medium text-gray-900">
                     {spec.value}
                   </span>
                 </div>

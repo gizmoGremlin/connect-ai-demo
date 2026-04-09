@@ -9,13 +9,10 @@ import { cn } from "@/lib/utils";
 
 export function HeroV2() {
   return (
-    <section className="relative overflow-hidden">
-      {/* Background video placeholder — replace with Artlist hero video */}
+    <section className="relative overflow-hidden bg-white">
+      {/* Subtle background gradient */}
       <div className="absolute inset-0 -z-10">
-        {/* ARTLIST: Dark, cinematic slow-mo of someone placing the device on their iPhone,
-            the screen lighting up, tasks cascading. Moody, shallow depth of field. */}
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.15),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.06),transparent)]" />
       </div>
 
       <div className="mx-auto max-w-6xl px-4 pt-20 pb-16 sm:pt-28 sm:pb-24 lg:pt-36 lg:pb-32">
@@ -25,7 +22,7 @@ export function HeroV2() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-sm font-medium tracking-widest uppercase text-blue-400"
+            className="text-sm font-medium tracking-widest uppercase text-blue-600"
           >
             Meet Connect AI
           </motion.p>
@@ -35,11 +32,11 @@ export function HeroV2() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-6 max-w-3xl text-5xl font-bold tracking-tight leading-[1.08] sm:text-6xl lg:text-7xl"
+            className="mt-6 max-w-3xl text-5xl font-bold tracking-tight leading-[1.08] text-gray-900 sm:text-6xl lg:text-7xl"
           >
             Your Phone.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
               Now on Autopilot.
             </span>
           </motion.h1>
@@ -49,7 +46,7 @@ export function HeroV2() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="mt-6 max-w-xl text-lg text-zinc-400 leading-relaxed sm:text-xl"
+            className="mt-6 max-w-xl text-lg text-gray-500 leading-relaxed sm:text-xl"
           >
             A tiny device that plugs into your iPhone and does the tedious stuff
             for you. No jailbreak. No app store. Just results.
@@ -66,7 +63,7 @@ export function HeroV2() {
               href="/signup"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "gap-2 text-base px-8"
+                "gap-2 text-base px-8 bg-gray-900 text-white hover:bg-gray-800"
               )}
             >
               Order Now &mdash; $99
@@ -75,7 +72,7 @@ export function HeroV2() {
             <button
               className={cn(
                 buttonVariants({ size: "lg", variant: "outline" }),
-                "gap-2 text-base"
+                "gap-2 text-base border-gray-300 text-gray-700 hover:bg-gray-50"
               )}
             >
               <Play className="h-4 w-4" />
@@ -88,12 +85,12 @@ export function HeroV2() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.55 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-500"
+            className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-400"
           >
             <span>Free shipping</span>
-            <span className="hidden sm:inline text-zinc-700">&bull;</span>
+            <span className="hidden sm:inline text-gray-300">&bull;</span>
             <span>30-day returns</span>
-            <span className="hidden sm:inline text-zinc-700">&bull;</span>
+            <span className="hidden sm:inline text-gray-300">&bull;</span>
             <span>Works with iPhone 15 & 16</span>
           </motion.div>
 
@@ -104,24 +101,17 @@ export function HeroV2() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative mt-16 w-full max-w-2xl"
           >
-            {/* Glow underneath product */}
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-blue-500/10 to-transparent blur-3xl" />
-            <div className="absolute -inset-4 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent rounded-3xl blur-2xl" />
-
             <Image
-              src="/connect-product.png"
+              src="/generated/hero-product.png"
               alt="Connect AI device"
-              width={800}
-              height={450}
+              width={1344}
+              height={768}
               className="relative w-full h-auto"
               priority
             />
           </motion.div>
         </div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent" />
     </section>
   );
 }
