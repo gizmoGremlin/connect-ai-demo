@@ -39,14 +39,14 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-b border-gray-100">
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between py-5 text-left"
+        className="flex w-full items-center justify-between py-5 text-left cursor-pointer group"
       >
-        <span className="text-sm font-medium text-gray-900 pr-4">{q}</span>
+        <span className="text-[15px] font-medium text-gray-900 pr-4 group-hover:text-gray-600 transition-colors">{q}</span>
         <ChevronDown
-          className={`h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200 ${
+          className={`h-4 w-4 shrink-0 text-gray-300 transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
         />
@@ -60,7 +60,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-gray-500 leading-relaxed">{a}</p>
+            <p className="pb-5 text-[14px] text-gray-500 leading-relaxed">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -70,7 +70,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 export function Faq() {
   return (
-    <section id="faq" className="border-t border-gray-200 bg-white py-20 sm:py-28 scroll-mt-20">
+    <section id="faq" className="bg-white py-20 sm:py-28 scroll-mt-20">
       <div className="mx-auto max-w-2xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X, Zap, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -15,15 +15,37 @@ const links = [
 
 function NavbarV2() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const el = document.getElementById("v2-scroll-root");
+    if (!el) return;
+    const onScroll = () => setScrolled(el.scrollTop > 16);
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-300",
+        scrolled
+          ? "bg-white/90 backdrop-blur-xl border-b border-gray-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+          : "bg-transparent"
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link
           href="/v2"
-          className="flex items-center gap-2 font-bold text-lg tracking-tight text-gray-900"
+          className="flex items-center gap-2.5 font-semibold text-[15px] tracking-tight text-gray-900"
         >
-          <Zap className="h-5 w-5 text-blue-600" />
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gray-900">
+            <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="white">
+              <rect x="4" y="1" width="4" height="4" rx="0.5" />
+              <rect x="1" y="6" width="4" height="4" rx="0.5" />
+              <rect x="4" y="11" width="4" height="4" rx="0.5" />
+            </svg>
+          </div>
           Connect AI
         </Link>
 
@@ -32,7 +54,7 @@ function NavbarV2() {
             <Link
               key={l.label}
               href={l.href}
-              className="text-sm text-gray-500 transition-colors hover:text-gray-900"
+              className="text-[13px] font-medium text-gray-500 transition-colors hover:text-gray-900"
             >
               {l.label}
             </Link>
@@ -44,7 +66,7 @@ function NavbarV2() {
             href="/signup"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "gap-1.5 bg-gray-900 text-white hover:bg-gray-800"
+              "gap-1.5 rounded-lg bg-gray-900 text-white hover:bg-gray-800 text-[13px] h-9 px-4"
             )}
           >
             Order Now
@@ -53,7 +75,7 @@ function NavbarV2() {
         </div>
 
         <button
-          className="md:hidden p-2 text-gray-500"
+          className="md:hidden p-2 text-gray-500 cursor-pointer"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -62,7 +84,7 @@ function NavbarV2() {
       </div>
 
       {open && (
-        <div className="border-t border-gray-200 bg-white px-4 pb-6 pt-4 md:hidden">
+        <div className="border-t border-gray-200/60 bg-white/95 backdrop-blur-xl px-4 pb-6 pt-4 md:hidden">
           <nav className="flex flex-col gap-4">
             {links.map((l) => (
               <Link
@@ -78,7 +100,7 @@ function NavbarV2() {
               href="/signup"
               className={cn(
                 buttonVariants({ size: "sm" }),
-                "mt-2 gap-1.5 bg-gray-900 text-white hover:bg-gray-800"
+                "mt-2 gap-1.5 rounded-lg bg-gray-900 text-white hover:bg-gray-800"
               )}
             >
               Order Now
@@ -93,26 +115,32 @@ function NavbarV2() {
 
 function FooterV2() {
   return (
-    <footer className="border-t border-gray-200 bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-          <div className="flex items-center gap-2 text-sm font-bold text-gray-900">
-            <Zap className="h-4 w-4 text-blue-600" />
+    <footer className="border-t border-gray-100 bg-gray-50/50">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
+          <div className="flex items-center gap-2.5 text-sm font-semibold text-gray-900">
+            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-gray-900">
+              <svg viewBox="0 0 16 16" className="h-3 w-3" fill="white">
+                <rect x="4" y="1" width="4" height="4" rx="0.5" />
+                <rect x="1" y="6" width="4" height="4" rx="0.5" />
+                <rect x="4" y="11" width="4" height="4" rx="0.5" />
+              </svg>
+            </div>
             Connect AI
           </div>
-          <div className="flex gap-6 text-xs text-gray-400">
-            <a href="#" className="hover:text-gray-600">
+          <div className="flex gap-8 text-[13px] text-gray-400">
+            <a href="#" className="transition-colors hover:text-gray-600 cursor-pointer">
               Privacy
             </a>
-            <a href="#" className="hover:text-gray-600">
+            <a href="#" className="transition-colors hover:text-gray-600 cursor-pointer">
               Terms
             </a>
-            <a href="#" className="hover:text-gray-600">
+            <a href="#" className="transition-colors hover:text-gray-600 cursor-pointer">
               Support
             </a>
           </div>
-          <p className="text-xs text-gray-400">
-            &copy; 2026 Connect AI. All rights reserved.
+          <p className="text-[13px] text-gray-400">
+            &copy; 2026 Connect AI
           </p>
         </div>
       </div>
@@ -127,6 +155,7 @@ export default function V2Layout({
 }) {
   return (
     <div
+      id="v2-scroll-root"
       className="force-light fixed inset-0 z-50 overflow-y-auto bg-white text-gray-900"
       style={{ colorScheme: "light" }}
     >

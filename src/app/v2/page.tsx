@@ -1,5 +1,6 @@
 import { HeroV2 } from "@/components/landing-v2/hero-v2";
 import { SocialProof } from "@/components/landing-v2/social-proof";
+import { ProblemSolution } from "@/components/landing-v2/problem-solution";
 import { VideoSection } from "@/components/landing-v2/video-section";
 import { UseCases } from "@/components/landing-v2/use-cases";
 import { HowItWorksV2 } from "@/components/landing-v2/how-it-works-v2";
@@ -14,6 +15,7 @@ export default function LandingV2() {
     <>
       <HeroV2 />
       <SocialProof />
+      <ProblemSolution />
       <VideoSection />
       <UseCases />
       <HowItWorksV2 />

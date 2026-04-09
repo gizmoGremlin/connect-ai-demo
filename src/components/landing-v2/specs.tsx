@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const specs = [
@@ -16,25 +15,24 @@ const specs = [
 
 export function Specs() {
   return (
-    <section className="border-t border-gray-200 bg-white py-20 sm:py-28">
+    <section className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          {/* Product image */}
+          {/* Product video */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
           >
-            {/* ARTLIST: product-angle-top — top-down or alt angle product shot */}
-            <div className="relative overflow-hidden rounded-2xl">
-              <Image
-                src="/connect-product.png"
-                alt="Connect AI device specifications"
-                width={600}
-                height={400}
-                className="relative w-full h-auto"
+            <div className="overflow-hidden rounded-2xl border border-gray-100">
+              <video
+                src="/generated/video/seedance-r5/r5-undock-full.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full"
               />
             </div>
           </motion.div>
@@ -49,22 +47,26 @@ export function Specs() {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Built to Disappear
             </h2>
-            <p className="mt-4 text-lg text-gray-500 leading-relaxed">
+            <p className="mt-4 text-[17px] text-gray-500 leading-relaxed">
               Small enough to forget it&apos;s there. Powerful enough to change
               how you use your phone.
             </p>
 
-            <div className="mt-10 space-y-0 divide-y divide-gray-200">
-              {specs.map((spec) => (
-                <div
+            <div className="mt-10 divide-y divide-gray-100">
+              {specs.map((spec, i) => (
+                <motion.div
                   key={spec.label}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: i * 0.04 }}
                   className="flex items-center justify-between py-3.5"
                 >
-                  <span className="text-sm text-gray-400">{spec.label}</span>
-                  <span className="text-sm font-medium text-gray-900">
+                  <span className="text-[14px] text-gray-400">{spec.label}</span>
+                  <span className="text-[14px] font-medium text-gray-900">
                     {spec.value}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
