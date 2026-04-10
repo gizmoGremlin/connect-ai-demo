@@ -11,7 +11,13 @@ export function FinalCta() {
     <section className="relative overflow-hidden bg-gray-50 py-24 sm:py-32">
       {/* Subtle radial */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(59,130,246,0.04),transparent)]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 50% 50% at 50% 50%, color-mix(in oklab, var(--brand) 6%, transparent), transparent)",
+          }}
+        />
       </div>
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
@@ -34,12 +40,10 @@ export function FinalCta() {
             />
           </div>
 
-          <h2 className="mt-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mt-10 text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-5xl">
             Stop Scrolling.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-blue-700 to-blue-500">
-              Start Delegating.
-            </span>
+            <span className="text-brand">Start Delegating.</span>
           </h2>
 
           <p className="mt-6 max-w-lg text-[17px] text-gray-500 leading-relaxed">

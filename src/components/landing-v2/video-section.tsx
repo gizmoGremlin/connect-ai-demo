@@ -13,6 +13,7 @@ import {
   FileText,
   Camera,
 } from "lucide-react";
+import { SectionHeader } from "./section-header";
 
 /* ── Trace steps — research scenario with feedback ── */
 const traceSteps = [
@@ -33,11 +34,11 @@ const traceDelays = [0, 1000, 1500, 2000, 2800, 4000, 5500, 7000, 8500, 10000];
 
 /* ── Phone screen states synced with trace ── */
 const phoneStates = [
-  { id: "home", label: "Home screen", icon: Smartphone, color: "bg-blue-400" },
-  { id: "safari", label: "Opening Safari", icon: Globe, color: "bg-blue-400" },
-  { id: "safari", label: "Opening Safari", icon: Globe, color: "bg-blue-400" },
-  { id: "safari", label: "Opening Safari", icon: Globe, color: "bg-blue-400" },
-  { id: "navigating", label: "Navigating...", icon: Globe, color: "bg-blue-400" },
+  { id: "home", label: "Home screen", icon: Smartphone, color: "bg-brand" },
+  { id: "safari", label: "Opening Safari", icon: Globe, color: "bg-brand" },
+  { id: "safari", label: "Opening Safari", icon: Globe, color: "bg-brand" },
+  { id: "safari", label: "Opening Safari", icon: Globe, color: "bg-brand" },
+  { id: "navigating", label: "Navigating...", icon: Globe, color: "bg-brand" },
   { id: "pricing", label: "Pricing page", icon: Globe, color: "bg-cyan-400" },
   { id: "screenshot", label: "Capturing screen", icon: Camera, color: "bg-cyan-400" },
   { id: "analyzing", label: "Analyzing...", icon: Eye, color: "bg-violet-400" },
@@ -47,7 +48,7 @@ const phoneStates = [
 
 const typeColors: Record<string, string> = {
   thinking: "text-violet-600 bg-violet-50 border-violet-100",
-  plan: "text-blue-600 bg-blue-50 border-blue-100",
+  plan: "text-brand bg-brand-subtle border-brand/20",
   action: "text-amber-600 bg-amber-50 border-amber-100",
   feedback: "text-cyan-600 bg-cyan-50 border-cyan-100",
   result: "text-emerald-600 bg-emerald-50 border-emerald-100",
@@ -59,7 +60,7 @@ function FlowDot({ direction }: { direction: "right" | "left" }) {
   return (
     <svg width="40" height="2" className="overflow-visible shrink-0">
       <line x1="0" y1="1" x2="40" y2="1" stroke="#d1d5db" strokeWidth="1.5" strokeDasharray="4 3" />
-      <motion.circle cy="1" r="2" fill={isRight ? "#3b82f6" : "#06b6d4"}
+      <motion.circle cy="1" r="2" fill={isRight ? "var(--brand)" : "#06b6d4"}
         animate={{ cx: isRight ? [0, 40] : [40, 0], opacity: [0, 1, 1, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
       />
@@ -101,7 +102,7 @@ function MiniPhone({ stateIdx }: { stateIdx: number }) {
                   <Eye className="h-5 w-5 text-violet-500" />
                 ) : current.id === "pricing" || current.id === "navigating" ? (
                   <>
-                    <Globe className="h-4 w-4 text-blue-400" />
+                    <Globe className="h-4 w-4 text-brand" />
                     <div className="mx-2 space-y-1 w-full px-3">
                       <div className="h-1.5 w-full rounded bg-gray-100" />
                       <div className="h-1.5 w-3/4 rounded bg-gray-100" />
@@ -215,9 +216,9 @@ function CtrlCenterPanel() {
       </div>
 
       {/* Skill file indicator */}
-      <div className="flex items-center gap-2 border-t border-blue-100 bg-blue-50/50 px-4 py-2">
-        <Code2 className="h-3 w-3 text-blue-500" />
-        <span className="text-[11px] font-mono text-blue-600">
+      <div className="flex items-center gap-2 border-t border-brand/20 bg-brand-subtle/50 px-4 py-2">
+        <Code2 className="h-3 w-3 text-brand" />
+        <span className="text-[11px] font-mono text-brand">
           competitor-research.connect
         </span>
         <span className="ml-auto flex items-center gap-1.5 text-[10px] font-mono text-emerald-500">
@@ -308,9 +309,9 @@ function ExecutionPhone() {
                       <div className="h-2 w-full rounded bg-gray-100" />
                       <div className="h-2 w-3/4 rounded bg-gray-100" />
                       <div className="mt-3 grid grid-cols-3 gap-2">
-                        <div className="h-12 rounded-lg bg-blue-50" />
-                        <div className="h-12 rounded-lg bg-blue-50" />
-                        <div className="h-12 rounded-lg bg-blue-50" />
+                        <div className="h-12 rounded-lg bg-brand-subtle" />
+                        <div className="h-12 rounded-lg bg-brand-subtle" />
+                        <div className="h-12 rounded-lg bg-brand-subtle" />
                       </div>
                       <div className="h-2 w-1/2 rounded bg-gray-100" />
                     </div>
@@ -361,7 +362,7 @@ function ExecutionPhone() {
 
 const features = [
   { icon: Brain, label: "You ask", desc: "Describe any goal in plain English", color: "text-violet-500 bg-violet-50" },
-  { icon: Code2, label: "It plans", desc: "Agent breaks the goal into steps", color: "text-blue-500 bg-blue-50" },
+  { icon: Code2, label: "It plans", desc: "Agent breaks the goal into steps", color: "text-brand bg-brand-subtle" },
   { icon: Smartphone, label: "It acts", desc: "Taps, swipes, and types on your iPhone", color: "text-emerald-500 bg-emerald-50" },
   { icon: Eye, label: "It reports", desc: "Sends results back to you", color: "text-cyan-500 bg-cyan-50" },
 ];
@@ -376,15 +377,14 @@ export function VideoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Say What You Need. It Handles the Rest.
-          </h2>
-          <p className="mt-4 text-[16px] text-gray-500 leading-relaxed">
-            Describe any goal in plain English — &ldquo;check competitor pricing&rdquo;, &ldquo;post to all my socials&rdquo;, &ldquo;back up my photos&rdquo; — and the agent
-            figures out every tap, swipe, and screenshot on its own.
-          </p>
+          <SectionHeader
+            eyebrow="How It Works"
+            title="Say What You Need. It Handles the Rest."
+            subtitle="Describe any goal in plain English — “check competitor pricing”, “post to all my socials”, “back up my photos” — and the agent figures out every tap, swipe, and screenshot on its own."
+            linkHref="#demo"
+            linkLabel="See the full demo"
+          />
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
             {features.map((f) => (
               <span key={f.label} className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-medium ${f.color}`}>

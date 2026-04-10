@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { SectionHeader } from "./section-header";
 
 export function PricingV2() {
   return (
@@ -15,14 +16,12 @@ export function PricingV2() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            One Device. One Price.
-          </h2>
-          <p className="mt-4 text-[17px] text-gray-500">
-            No hidden fees. No contracts. Just plug in and go.
-          </p>
+          <SectionHeader
+            eyebrow="Pricing"
+            title="One Device. One Price."
+            subtitle="No hidden fees. No contracts. Just plug in and go."
+          />
         </motion.div>
 
         <motion.div
@@ -38,7 +37,7 @@ export function PricingV2() {
               The Device
             </p>
             <div className="mt-4 flex items-baseline gap-1">
-              <span className="text-5xl font-bold tracking-tight text-gray-900">$99</span>
+              <span className="text-5xl font-bold tracking-tight text-black">$99</span>
               <span className="text-[14px] text-gray-400">one-time</span>
             </div>
             <p className="mt-3 text-[14px] text-gray-500">
@@ -82,11 +81,11 @@ export function PricingV2() {
               Recommended
             </div>
 
-            <p className="text-[13px] font-semibold text-blue-600 uppercase tracking-wider">
+            <p className="text-[13px] font-semibold text-brand uppercase tracking-wider">
               Device + Cloud
             </p>
             <div className="mt-4 flex items-baseline gap-1">
-              <span className="text-5xl font-bold tracking-tight text-gray-900">$99</span>
+              <span className="text-5xl font-bold tracking-tight text-black">$99</span>
               <span className="text-[14px] text-gray-400">
                 + $5<span className="text-gray-300">/mo</span>
               </span>
@@ -108,7 +107,7 @@ export function PricingV2() {
                   key={f}
                   className="flex items-center gap-3 text-[14px] text-gray-600"
                 >
-                  <Check className="h-4 w-4 text-blue-500 shrink-0" />
+                  <Check className="h-4 w-4 text-brand shrink-0" />
                   {f}
                 </li>
               ))}

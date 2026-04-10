@@ -4,6 +4,7 @@ import { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { SectionHeader } from "./section-header";
 
 const slides = [
   {
@@ -82,14 +83,12 @@ export function RealLife() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            See Connect AI in Real Life
-          </h2>
-          <p className="mt-4 text-[17px] text-gray-500">
-            Real moments from real people putting their phones to work.
-          </p>
+          <SectionHeader
+            eyebrow="In the Wild"
+            title="See Connect AI in Real Life"
+            subtitle="Real moments from real people putting their phones to work."
+          />
         </motion.div>
 
         {/* Carousel wrapper */}
@@ -121,7 +120,7 @@ export function RealLife() {
                   </div>
                 </div>
                 <div className="mt-3 px-1">
-                  <p className="text-[15px] font-semibold text-gray-900">
+                  <p className="text-[15px] font-semibold text-black">
                     {slide.title}
                   </p>
                   <p className="mt-0.5 text-[13px] text-gray-500">

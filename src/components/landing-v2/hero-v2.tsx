@@ -23,12 +23,9 @@ export function HeroV2() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl"
+          className="mt-3 text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-5xl"
         >
-          Put Your Phone{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-500">
-            to Work.
-          </span>
+          Put Your Phone <span className="text-brand">to Work.</span>
         </motion.h1>
       </div>
 
@@ -50,7 +47,7 @@ export function HeroV2() {
               className="w-full block"
             />
           </div>
-          <div className="absolute -inset-6 -z-10 rounded-[3rem] bg-gradient-to-b from-blue-50/40 via-transparent to-transparent blur-2xl" />
+          <div className="absolute -inset-6 -z-10 rounded-[3rem] bg-gradient-to-b from-brand-subtle/60 via-transparent to-transparent blur-2xl" />
         </motion.div>
       </div>
 

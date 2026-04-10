@@ -4,6 +4,7 @@ import { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { SectionHeader } from "./section-header";
 
 const reviews = [
   {
@@ -50,21 +51,19 @@ export function FeatureBento() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl"
         >
-          <p className="text-[14px] font-medium italic text-blue-600">
-            Designed to disappear
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-            Simple on the Outside.
-            <br />
-            Genius Inside.
-          </h2>
-          <p className="mt-5 text-[17px] text-gray-500 leading-relaxed max-w-2xl">
-            A thin aluminum plate, a USB-C connection, and an AI that operates
-            your phone like you would &mdash; tapping, swiping, and typing so
-            you don&apos;t have to.
-          </p>
+          <SectionHeader
+            align="left"
+            eyebrow="Designed to Disappear"
+            title={
+              <>
+                Simple on the Outside.
+                <br />
+                Genius Inside.
+              </>
+            }
+            subtitle="A thin aluminum plate, a USB-C connection, and an AI that operates your phone like you would — tapping, swiping, and typing so you don't have to."
+          />
         </motion.div>
 
         {/* Hero flat-lay */}
@@ -110,10 +109,10 @@ export function FeatureBento() {
                 />
               </div>
               <div className="flex flex-col justify-center p-6 sm:p-8">
-                <span className="inline-block w-fit rounded-full bg-violet-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-violet-600">
+                <span className="inline-block w-fit rounded-full bg-brand-subtle px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-brand">
                   Your Brain, But Automated
                 </span>
-                <h3 className="mt-4 text-xl font-bold text-gray-900 sm:text-2xl">
+                <h3 className="mt-4 text-xl font-bold text-black sm:text-2xl">
                   Tell It What to Do
                 </h3>
                 <p className="mt-2 text-[15px] text-gray-500 leading-relaxed">
@@ -145,7 +144,7 @@ export function FeatureBento() {
               <span className="inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-gray-600">
                 Hardware
               </span>
-              <h3 className="mt-3 text-[17px] font-bold text-gray-900">
+              <h3 className="mt-3 text-[17px] font-bold text-black">
                 CNC Aluminum. 28 Grams.
               </h3>
               <p className="mt-1.5 text-[14px] text-gray-500 leading-relaxed">
@@ -173,10 +172,10 @@ export function FeatureBento() {
               />
             </div>
             <div className="p-5 sm:p-6">
-              <span className="inline-block rounded-full bg-blue-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-blue-600">
+              <span className="inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-gray-600">
                 Open Source
               </span>
-              <h3 className="mt-3 text-[17px] font-bold text-gray-900">
+              <h3 className="mt-3 text-[17px] font-bold text-black">
                 .connect Scripts
               </h3>
               <p className="mt-1.5 text-[14px] text-gray-500 leading-relaxed">
@@ -206,10 +205,10 @@ export function FeatureBento() {
               />
             </div>
             <div className="p-5 sm:p-6">
-              <span className="inline-block rounded-full bg-cyan-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-cyan-600">
+              <span className="inline-block rounded-full bg-brand-subtle px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-brand">
                 Screen Vision
               </span>
-              <h3 className="mt-3 text-[17px] font-bold text-gray-900">
+              <h3 className="mt-3 text-[17px] font-bold text-black">
                 It Sees What You See
               </h3>
               <p className="mt-1.5 text-[14px] text-gray-500 leading-relaxed">
@@ -238,10 +237,10 @@ export function FeatureBento() {
                 />
               </div>
               <div className="flex flex-col justify-center p-6 sm:p-8">
-                <span className="inline-block w-fit rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-emerald-600">
+                <span className="inline-block w-fit rounded-full bg-brand-subtle px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-brand">
                   Community
                 </span>
-                <h3 className="mt-4 text-xl font-bold text-gray-900 sm:text-2xl">
+                <h3 className="mt-4 text-xl font-bold text-black sm:text-2xl">
                   Thousands Ready to Run
                 </h3>
                 <p className="mt-2 text-[15px] text-gray-500 leading-relaxed">
@@ -270,10 +269,10 @@ export function FeatureBento() {
               />
             </div>
             <div className="p-5 sm:p-6">
-              <span className="inline-block rounded-full bg-amber-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-amber-600">
+              <span className="inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-gray-600">
                 Privacy
               </span>
-              <h3 className="mt-3 text-[17px] font-bold text-gray-900">
+              <h3 className="mt-3 text-[17px] font-bold text-black">
                 Your Data Stays Local
               </h3>
               <p className="mt-1.5 text-[14px] text-gray-500 leading-relaxed">
@@ -328,7 +327,7 @@ function ReviewCarousel() {
     >
       {/* Header */}
       <div className="text-center">
-        <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+        <h3 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
           2,400+ Early Adopters
         </h3>
         <p className="mt-2 text-[14px] text-gray-400">
@@ -381,7 +380,7 @@ function ReviewCarousel() {
                 </p>
 
                 {/* Title */}
-                <h4 className="mt-1.5 text-[15px] font-bold text-gray-900">
+                <h4 className="mt-1.5 text-[15px] font-bold text-black">
                   {r.title}
                 </h4>
 

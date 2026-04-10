@@ -39,6 +39,10 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-subtle: var(--brand-subtle);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -49,6 +53,10 @@
 }
 
 :root {
+  --brand: oklch(0.55 0.22 258);
+  --brand-foreground: oklch(1 0 0);
+  --brand-hover: oklch(0.48 0.22 258);
+  --brand-subtle: oklch(0.96 0.04 258);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -119,6 +127,10 @@
 
 /* Override dark theme for v2 landing page */
 .force-light {
+  --brand: oklch(0.55 0.22 258);
+  --brand-foreground: oklch(1 0 0);
+  --brand-hover: oklch(0.48 0.22 258);
+  --brand-subtle: oklch(0.96 0.04 258);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

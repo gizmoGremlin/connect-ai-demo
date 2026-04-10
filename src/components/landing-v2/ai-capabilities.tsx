@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Brain, ListChecks, Activity, CheckCircle2, Zap, Eye } from "lucide-react";
+import { SectionHeader } from "./section-header";
 
 /* ── Phone mockup with dark command UI ── */
 function PhoneMockup() {
@@ -26,8 +27,8 @@ function PhoneMockup() {
           {/* Chat interface */}
           <div className="flex-1 mx-3 mt-3 space-y-2.5 overflow-hidden">
             {/* User message */}
-            <div className="ml-auto max-w-[85%] rounded-2xl rounded-br-sm bg-blue-600 px-3 py-2">
-              <p className="text-[10px] text-white leading-snug">
+            <div className="ml-auto max-w-[85%] rounded-2xl rounded-br-sm bg-brand px-3 py-2">
+              <p className="text-[10px] text-brand-foreground leading-snug">
                 Check competitor pricing and save a report to Notes
               </p>
             </div>
@@ -39,8 +40,8 @@ function PhoneMockup() {
                 <span className="text-[9px] text-violet-300 font-mono">Analyzing request...</span>
               </div>
               <div className="flex items-center gap-1.5 rounded-xl bg-gray-800/80 px-2.5 py-1.5">
-                <ListChecks className="h-2.5 w-2.5 text-blue-400 shrink-0" />
-                <span className="text-[9px] text-blue-300 font-mono">Plan: 3 sites → compare → save</span>
+                <ListChecks className="h-2.5 w-2.5 text-brand shrink-0" />
+                <span className="text-[9px] text-brand font-mono">Plan: 3 sites → compare → save</span>
               </div>
               <div className="flex items-center gap-1.5 rounded-xl bg-gray-800/80 px-2.5 py-1.5">
                 <Zap className="h-2.5 w-2.5 text-amber-400 shrink-0" />
@@ -80,7 +81,7 @@ const features = [
     title: (
       <>
         It doesn&apos;t just follow commands.{" "}
-        <span className="text-violet-600">It thinks.</span>
+        <span className="text-brand">It thinks.</span>
       </>
     ),
     desc: "From simple requests to complex goals, your agent reasons through each step — understanding context, not just keywords.",
@@ -90,13 +91,13 @@ const features = [
           <Brain className="h-3.5 w-3.5 text-violet-500 shrink-0" />
           <span className="text-[11px] font-mono text-violet-600">Understanding intent...</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg bg-blue-50 border border-blue-100 px-3 py-2">
-          <ListChecks className="h-3.5 w-3.5 text-blue-500 shrink-0" />
-          <span className="text-[11px] font-mono text-blue-600">Breaking into 4 steps</span>
+        <div className="flex items-center gap-2 rounded-lg bg-brand-subtle border border-brand/20 px-3 py-2">
+          <ListChecks className="h-3.5 w-3.5 text-brand shrink-0" />
+          <span className="text-[11px] font-mono text-brand">Breaking into 4 steps</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg bg-blue-50 border border-blue-100 px-3 py-2">
-          <ListChecks className="h-3.5 w-3.5 text-blue-500 shrink-0" />
-          <span className="text-[11px] font-mono text-blue-600">Selecting best approach</span>
+        <div className="flex items-center gap-2 rounded-lg bg-brand-subtle border border-brand/20 px-3 py-2">
+          <ListChecks className="h-3.5 w-3.5 text-brand shrink-0" />
+          <span className="text-[11px] font-mono text-brand">Selecting best approach</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg bg-emerald-50 border border-emerald-100 px-3 py-2">
           <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
@@ -109,7 +110,7 @@ const features = [
     title: (
       <>
         Turn any goal into{" "}
-        <span className="text-blue-600">a sequence of actions.</span>
+        <span className="text-brand">a sequence of actions.</span>
       </>
     ),
     desc: "Connect AI breaks down abstract goals into concrete phone operations — taps, swipes, screenshots, and text input.",
@@ -123,7 +124,7 @@ const features = [
         </div>
         {["Open Instagram → new post", "Select photo → add caption", "Share → switch to Twitter"].map((step, i) => (
           <div key={i} className="flex items-center gap-2 rounded-lg bg-white border border-gray-200 px-3 py-2">
-            <div className="flex h-4 w-4 items-center justify-center rounded-full bg-blue-100 text-[8px] font-bold text-blue-600 shrink-0">
+            <div className="flex h-4 w-4 items-center justify-center rounded-full bg-brand-subtle text-[8px] font-bold text-brand shrink-0">
               {i + 1}
             </div>
             <span className="text-[11px] font-mono text-gray-600">{step}</span>
@@ -136,7 +137,7 @@ const features = [
     title: (
       <>
         See results in real time{" "}
-        <span className="text-cyan-600">as it works.</span>
+        <span className="text-brand">as it works.</span>
       </>
     ),
     desc: "Watch the live execution trace as your agent operates. Every action, every screen read, every decision — transparent and visible.",
@@ -180,21 +181,19 @@ export function AiCapabilities() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl"
         >
-          <p className="text-[14px] font-medium italic text-blue-600">
-            Connect AI Agent
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-            AI That Doesn&apos;t Just Listen.
-            <br />
-            It Acts.
-          </h2>
-          <p className="mt-5 text-[17px] text-gray-500 leading-relaxed max-w-2xl">
-            Powered by the latest language models. Your agent understands
-            context, reads your screen, and operates your phone like you would
-            &mdash; but faster.
-          </p>
+          <SectionHeader
+            align="left"
+            eyebrow="Connect AI Agent"
+            title={
+              <>
+                AI That Doesn&apos;t Just Listen.
+                <br />
+                It Acts.
+              </>
+            }
+            subtitle="Powered by the latest language models. Your agent understands context, reads your screen, and operates your phone like you would — but faster."
+          />
         </motion.div>
 
         {/* Center visual: phone mockup + product shot */}
@@ -235,7 +234,7 @@ export function AiCapabilities() {
 
               {/* Text */}
               <div className="p-5">
-                <h3 className="text-[15px] font-bold text-gray-900 leading-snug">
+                <h3 className="text-[15px] font-bold text-black leading-snug">
                   {f.title}
                 </h3>
                 <p className="mt-2 text-[13px] text-gray-500 leading-relaxed">

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Plug, MessageSquareText, Sparkles } from "lucide-react";
+import { SectionHeader } from "./section-header";
 
 const steps = [
   {
@@ -36,14 +37,12 @@ export function HowItWorksV2() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Stupidly Simple
-          </h2>
-          <p className="mt-4 text-[17px] text-gray-500">
-            If you can charge your phone, you can use this.
-          </p>
+          <SectionHeader
+            eyebrow="How It Works"
+            title="Stupidly Simple"
+            subtitle="If you can charge your phone, you can use this."
+          />
         </motion.div>
 
         <div className="mt-16 grid gap-8 lg:grid-cols-3">
@@ -60,7 +59,7 @@ export function HowItWorksV2() {
               <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50 to-gray-100/50 flex items-center justify-center">
                 <div className="flex flex-col items-center gap-3">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white border border-gray-200/60 shadow-sm">
-                    <step.icon className="h-6 w-6 text-gray-900" strokeWidth={1.5} />
+                    <step.icon className="h-6 w-6 text-black" strokeWidth={1.5} />
                   </div>
                   <span className="text-5xl font-bold text-gray-200/60 select-none">
                     {step.number}
@@ -70,13 +69,13 @@ export function HowItWorksV2() {
 
               {/* Step info */}
               <div className="mt-6 flex items-center gap-3">
-                <span className="text-[13px] font-mono font-bold text-blue-600">
+                <span className="text-[13px] font-mono font-bold text-brand">
                   {step.number}
                 </span>
                 <div className="h-px flex-1 bg-gray-100" />
               </div>
 
-              <h3 className="mt-3 text-lg font-semibold text-gray-900">
+              <h3 className="mt-3 text-lg font-semibold text-black">
                 {step.title}
               </h3>
               <p className="mt-2 text-[14px] text-gray-500 leading-relaxed">

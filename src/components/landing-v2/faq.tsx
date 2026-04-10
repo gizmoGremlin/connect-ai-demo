@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { SectionHeader } from "./section-header";
 
 const faqs = [
   {
@@ -44,7 +45,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between py-5 text-left cursor-pointer group"
       >
-        <span className="text-[15px] font-medium text-gray-900 pr-4 group-hover:text-gray-600 transition-colors">{q}</span>
+        <span className="text-[15px] font-medium text-black pr-4 group-hover:text-gray-600 transition-colors">{q}</span>
         <ChevronDown
           className={`h-4 w-4 shrink-0 text-gray-300 transition-transform duration-200 ${
             open ? "rotate-180" : ""
@@ -77,11 +78,11 @@ export function Faq() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Questions? Answered.
-          </h2>
+          <SectionHeader
+            eyebrow="FAQ"
+            title="Questions? Answered."
+          />
         </motion.div>
 
         <motion.div

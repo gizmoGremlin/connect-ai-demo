@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Sparkles } from "lucide-react";
+import { SectionHeader } from "./section-header";
 
 /* ── Scattered "manual task" cards for the problem side ── */
 const manualTasks = [
@@ -42,18 +43,18 @@ export function ProblemSolution() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-            A Hardware Agent for the
-            <br />
-            Device You Already Own.
-          </h2>
-          <p className="mt-5 text-[17px] text-gray-500 leading-relaxed">
-            Not an app. Not a shortcut. A physical device that sees your screen,
-            understands your goals, and operates your phone like a second pair of
-            hands.
-          </p>
+          <SectionHeader
+            eyebrow="Why Connect AI"
+            title={
+              <>
+                A Hardware Agent for the
+                <br />
+                Device You Already Own.
+              </>
+            }
+            subtitle="Not an app. Not a shortcut. A physical device that sees your screen, understands your goals, and operates your phone like a second pair of hands."
+          />
         </motion.div>
 
         {/* Split comparison */}
@@ -64,7 +65,7 @@ export function ProblemSolution() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-200 via-gray-300/80 to-blue-200/40 p-6 sm:p-8 min-h-[380px]"
+            className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-200 via-gray-300/80 to-gray-200/40 p-6 sm:p-8 min-h-[380px]"
           >
             <p className="text-[13px] font-semibold text-gray-500 uppercase tracking-wider">
               Without Connect AI
@@ -101,7 +102,7 @@ export function ProblemSolution() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="relative rounded-2xl overflow-hidden border border-gray-200/60 bg-gray-50 p-6 sm:p-8 min-h-[380px] flex flex-col"
           >
-            <p className="text-[13px] font-semibold text-blue-600 uppercase tracking-wider">
+            <p className="text-[13px] font-semibold text-brand uppercase tracking-wider">
               With Connect AI
             </p>
             <p className="mt-1.5 text-[13px] text-gray-400">
@@ -119,7 +120,7 @@ export function ProblemSolution() {
               >
                 <div className="rounded-xl border border-gray-200 bg-white px-5 py-4 shadow-sm">
                   <div className="flex items-start gap-3">
-                    <Sparkles className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
+                    <Sparkles className="h-4 w-4 text-brand mt-0.5 shrink-0" />
                     <p className="text-[14px] text-gray-700 leading-relaxed font-mono">
                       &ldquo;Check competitor pricing and save a comparison to
                       Notes&rdquo;

@@ -13,6 +13,7 @@ import {
   Cpu,
   Box,
 } from "lucide-react";
+import { SectionHeader } from "./section-header";
 
 /* ── Code editor mockup — light theme ── */
 function CodeEditorMockup() {
@@ -51,7 +52,7 @@ function CodeEditorMockup() {
             <span className="text-gray-700">{"  "}</span>
             <span className="text-emerald-600">set</span>
             <span className="text-gray-700"> target = </span>
-            <span className="text-blue-600">49.99</span>
+            <span className="text-brand">49.99</span>
             {"\n\n"}
             <span className="text-gray-700">{"  "}</span>
             <span className="text-emerald-600">open</span>
@@ -110,8 +111,8 @@ const communitySkills = [
   },
   {
     icon: ShoppingCart,
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-500",
+    iconBg: "bg-brand-subtle",
+    iconColor: "text-brand",
     name: "Price Watcher",
     author: "marcust",
     installs: "3,891",
@@ -209,7 +210,7 @@ const features = [
     title: (
       <>
         Thousands of skills.{" "}
-        <span className="text-blue-600">One tap to run.</span>
+        <span className="text-brand">One tap to run.</span>
       </>
     ),
     desc: "Price monitoring, social posting, morning briefings, message auto-replies \u2014 browse community-built skills or fork one and make it yours.",
@@ -344,7 +345,7 @@ const features = [
         {/* Parts list */}
         <div className="space-y-1.5 mb-3">
           {[
-            { icon: Cpu, name: "ESP32-S3 DevKit", price: "~$8", color: "text-blue-500", bg: "bg-blue-50" },
+            { icon: Cpu, name: "ESP32-S3 DevKit", price: "~$8", color: "text-brand", bg: "bg-brand-subtle" },
             { icon: Box, name: "USB-C Audio Bridge", price: "~$12", color: "text-amber-500", bg: "bg-amber-50" },
             { icon: Wrench, name: "3D Printed Case + MagSafe", price: "~$8", color: "text-emerald-500", bg: "bg-emerald-50" },
           ].map((part) => (
@@ -380,25 +381,32 @@ export function OpenScripts() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl"
         >
-          <p className="text-[14px] font-medium italic text-emerald-600">
-            Open Source &amp; Community-Driven
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-            Read Every Line.
-            <br />
-            Build Every Part.
-          </h2>
-          <p className="mt-5 text-[17px] text-gray-500 leading-relaxed max-w-2xl">
-            The{" "}
-            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono text-sm text-emerald-600">
-              .connect
-            </code>{" "}
-            scripting language, the runtime, and the hardware itself are fully
-            open source. Browse thousands of community skills, write your own in
-            a readable DSL, or build the entire device from off-the-shelf parts.
-          </p>
+          <SectionHeader
+            align="left"
+            eyebrow="Open Source & Community-Driven"
+            title={
+              <>
+                Read Every Line.
+                <br />
+                Build Every Part.
+              </>
+            }
+            subtitle={
+              <>
+                The{" "}
+                <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono text-sm text-brand">
+                  .connect
+                </code>{" "}
+                scripting language, the runtime, and the hardware itself are
+                fully open source. Browse thousands of community skills, write
+                your own in a readable DSL, or build the entire device from
+                off-the-shelf parts.
+              </>
+            }
+            linkHref="/cookbook"
+            linkLabel="Browse the open script library"
+          />
         </motion.div>
 
         {/* Center visual: code editor + community browser */}
@@ -431,7 +439,7 @@ export function OpenScripts() {
 
               {/* Text */}
               <div className="p-5">
-                <h3 className="text-[15px] font-bold text-gray-900 leading-snug">
+                <h3 className="text-[15px] font-bold text-black leading-snug">
                   {f.title}
                 </h3>
                 <p className="mt-2 text-[13px] text-gray-500 leading-relaxed">

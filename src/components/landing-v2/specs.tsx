@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionHeader } from "./section-header";
 
 const specs = [
   { label: "Connection", value: "USB-C + MagSafe" },
@@ -44,13 +45,12 @@ export function Specs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Built to Disappear
-            </h2>
-            <p className="mt-4 text-[17px] text-gray-500 leading-relaxed">
-              Small enough to forget it&apos;s there. Powerful enough to change
-              how you use your phone.
-            </p>
+            <SectionHeader
+              align="left"
+              eyebrow="Specifications"
+              title="Built to Disappear"
+              subtitle="Small enough to forget it's there. Powerful enough to change how you use your phone."
+            />
 
             <div className="mt-10 divide-y divide-gray-100">
               {specs.map((spec, i) => (
@@ -63,7 +63,7 @@ export function Specs() {
                   className="flex items-center justify-between py-3.5"
                 >
                   <span className="text-[14px] text-gray-400">{spec.label}</span>
-                  <span className="text-[14px] font-medium text-gray-900">
+                  <span className="text-[14px] font-medium text-black">
                     {spec.value}
                   </span>
                 </motion.div>
