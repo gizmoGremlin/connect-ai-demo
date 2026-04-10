@@ -8,7 +8,6 @@ import { FeatureBento } from "@/components/landing-v2/feature-bento";
 import { AiCapabilities } from "@/components/landing-v2/ai-capabilities";
 import { OpenScripts } from "@/components/landing-v2/open-scripts";
 import { UseCases } from "@/components/landing-v2/use-cases";
-import { HowItWorksV2 } from "@/components/landing-v2/how-it-works-v2";
 import { Testimonials } from "@/components/landing-v2/testimonials";
 import { Specs } from "@/components/landing-v2/specs";
 import { PricingV2 } from "@/components/landing-v2/pricing-v2";
@@ -22,12 +21,11 @@ export default function Home() {
       <ProductFilm />
       <SocialProof />
       <ProblemSolution />
-      <VideoSection />
       <RealLife />
       <FeatureBento />
       <AiCapabilities />
       <OpenScripts />
-      <HowItWorksV2 />
+      <VideoSection />
       <UseCases />
       <Testimonials />
       <Specs />
