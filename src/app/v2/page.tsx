@@ -2,6 +2,10 @@ import { HeroV2 } from "@/components/landing-v2/hero-v2";
 import { SocialProof } from "@/components/landing-v2/social-proof";
 import { ProblemSolution } from "@/components/landing-v2/problem-solution";
 import { VideoSection } from "@/components/landing-v2/video-section";
+import { RealLife } from "@/components/landing-v2/real-life";
+import { FeatureBento } from "@/components/landing-v2/feature-bento";
+import { AiCapabilities } from "@/components/landing-v2/ai-capabilities";
+import { OpenScripts } from "@/components/landing-v2/open-scripts";
 import { UseCases } from "@/components/landing-v2/use-cases";
 import { HowItWorksV2 } from "@/components/landing-v2/how-it-works-v2";
 import { Testimonials } from "@/components/landing-v2/testimonials";
@@ -17,6 +21,10 @@ export default function LandingV2() {
       <SocialProof />
       <ProblemSolution />
       <VideoSection />
+      <RealLife />
+      <FeatureBento />
+      <AiCapabilities />
+      <OpenScripts />
       <UseCases />
       <HowItWorksV2 />
       <Testimonials />
