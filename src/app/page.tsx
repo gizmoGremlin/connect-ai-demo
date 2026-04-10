@@ -1,4 +1,5 @@
 import { HeroV2 } from "@/components/landing-v2/hero-v2";
+import { ProductFilm } from "@/components/landing-v2/product-film";
 import { SocialProof } from "@/components/landing-v2/social-proof";
 import { ProblemSolution } from "@/components/landing-v2/problem-solution";
 import { VideoSection } from "@/components/landing-v2/video-section";
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <>
       <HeroV2 />
+      <ProductFilm />
       <SocialProof />
       <ProblemSolution />
       <VideoSection />
