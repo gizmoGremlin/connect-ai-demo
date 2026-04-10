@@ -391,11 +391,11 @@ export function AgentChat({
   };
 
   return (
-    <div className="flex flex-col rounded-2xl border border-border/60 bg-card/50 overflow-hidden">
+    <div className="flex flex-col rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-border/40 px-5 py-3">
+      <div className="flex items-center justify-between border-b border-gray-100 bg-gray-50/50 px-5 py-3">
         <div className="flex items-center gap-2">
-          <Brain className="h-4 w-4 text-blue-400" />
+          <Brain className="h-4 w-4 text-blue-500" />
           <span className="text-sm font-semibold">AI Agent</span>
         </div>
         <div className="flex items-center gap-2">
@@ -407,10 +407,10 @@ export function AgentChat({
           <div
             className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-medium ${
               state.status === "idle"
-                ? "bg-zinc-800 text-zinc-400"
+                ? "bg-gray-100 text-gray-500"
                 : state.status === "done"
-                  ? "bg-emerald-500/10 text-emerald-400"
-                  : "bg-blue-500/10 text-blue-400"
+                  ? "bg-emerald-50 text-emerald-600"
+                  : "bg-blue-50 text-blue-600"
             }`}
           >
             {state.status !== "idle" && state.status !== "done" && (
@@ -431,7 +431,7 @@ export function AgentChat({
       >
         {state.status === "idle" && !state.prompt && (
           <div className="flex flex-col items-center justify-center h-full text-center py-12">
-            <Brain className="h-10 w-10 text-zinc-600 mb-3" />
+            <Brain className="h-10 w-10 text-gray-300 mb-3" />
             <p className="text-sm text-muted-foreground">
               Describe what you want your phone to do.
             </p>
@@ -439,7 +439,7 @@ export function AgentChat({
               Try{" "}
               <button
                 type="button"
-                className="text-blue-400 hover:underline"
+                className="text-blue-500 hover:underline"
                 onClick={() => {
                   dispatch({ type: "SET_INPUT", value: "Blast off" });
                 }}
@@ -447,7 +447,7 @@ export function AgentChat({
                 &quot;Blast off&quot;
               </button>{" "}
               to test the voice pipeline, or{" "}
-              <Link href="/skills" className="text-blue-400 hover:underline">
+              <Link href="/skills" className="text-blue-500 hover:underline">
                 browse skills
               </Link>
             </p>
@@ -458,15 +458,15 @@ export function AgentChat({
           <>
             {/* User prompt */}
             <div className="flex justify-end">
-              <div className="rounded-2xl rounded-tr-sm bg-blue-500/15 border border-blue-500/20 px-4 py-2.5 max-w-[85%]">
-                <p className="text-sm">{state.prompt}</p>
+              <div className="rounded-2xl rounded-tr-sm bg-blue-50 border border-blue-200 px-4 py-2.5 max-w-[85%]">
+                <p className="text-sm text-gray-900">{state.prompt}</p>
               </div>
             </div>
 
             {/* Thinking */}
             {state.status === "thinking" && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Brain className="h-4 w-4 text-blue-400 animate-pulse" />
+                <Brain className="h-4 w-4 text-blue-500 animate-pulse" />
                 Understanding your request...
               </div>
             )}
@@ -492,16 +492,16 @@ export function AgentChat({
                         <CheckCircle2
                           className={`h-3.5 w-3.5 shrink-0 transition-colors ${
                             i < state.executionProgress
-                              ? "text-emerald-400"
-                              : "text-zinc-600"
+                              ? "text-emerald-600"
+                              : "text-gray-300"
                           }`}
                         />
                       ) : (
-                        <span className="text-xs text-zinc-500 w-4 text-right shrink-0">
+                        <span className="text-xs text-gray-400 w-4 text-right shrink-0">
                           {i + 1}.
                         </span>
                       )}
-                      <span className="text-zinc-300">{step}</span>
+                      <span className="text-gray-700">{step}</span>
                     </div>
                   ))}
                 </div>
@@ -513,19 +513,19 @@ export function AgentChat({
               (state.status === "generating" ||
                 state.status === "executing" ||
                 state.status === "done") && (
-                <div className="rounded-xl border border-cyan-500/20 overflow-hidden">
-                  <div className="flex items-center gap-2 border-b border-border/30 bg-zinc-900/50 px-4 py-2">
-                    <Code2 className="h-3.5 w-3.5 text-cyan-400" />
-                    <span className="text-[11px] font-mono text-cyan-400/80">
+                <div className="rounded-xl border border-emerald-200 overflow-hidden">
+                  <div className="flex items-center gap-2 border-b border-emerald-100 bg-emerald-50/40 px-4 py-2">
+                    <Code2 className="h-3.5 w-3.5 text-emerald-600" />
+                    <span className="text-[11px] font-mono text-emerald-600/80">
                       generated-skill.connect
                     </span>
                     {state.status === "generating" && (
-                      <Loader2 className="h-3 w-3 animate-spin text-blue-400 ml-auto" />
+                      <Loader2 className="h-3 w-3 animate-spin text-blue-500 ml-auto" />
                     )}
                     {state.status === "done" && (
                       <button
                         type="button"
-                        className="ml-auto flex items-center gap-1 rounded-full bg-blue-500/10 border border-blue-500/30 px-2 py-0.5 text-[10px] font-medium text-blue-400 hover:bg-blue-500/20 transition-colors"
+                        className="ml-auto flex items-center gap-1 rounded-full bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] font-medium text-blue-600 hover:bg-blue-100 transition-colors"
                         onClick={() =>
                           import("sonner").then(({ toast }) =>
                             toast.success("Script saved to your skills")
@@ -537,13 +537,13 @@ export function AgentChat({
                       </button>
                     )}
                   </div>
-                  <pre className="bg-zinc-950 p-4 text-xs font-mono leading-relaxed overflow-x-auto text-zinc-400">
+                  <pre className="bg-gray-50 p-4 text-xs font-mono leading-relaxed overflow-x-auto text-gray-700">
                     {state.response.script
                       .split("\n")
                       .slice(0, state.visibleScriptLines)
                       .join("\n")}
                     {state.status === "generating" && (
-                      <span className="animate-pulse text-cyan-400">|</span>
+                      <span className="animate-pulse text-emerald-600">|</span>
                     )}
                   </pre>
                 </div>
@@ -554,15 +554,15 @@ export function AgentChat({
               <div className="flex items-center gap-2 text-sm">
                 {isBlastOff(state.prompt) ? (
                   <>
-                    <Volume2 className="h-4 w-4 text-blue-400 animate-pulse" />
-                    <span className="text-zinc-400">
+                    <Volume2 className="h-4 w-4 text-blue-500 animate-pulse" />
+                    <span className="text-gray-500">
                       Executing voice pipeline...
                     </span>
                   </>
                 ) : (
                   <>
-                    <Loader2 className="h-4 w-4 animate-spin text-blue-400" />
-                    <span className="text-zinc-400">
+                    <Loader2 className="h-4 w-4 animate-spin text-blue-500" />
+                    <span className="text-gray-500">
                       Executing on {deviceName || "device"}...
                     </span>
                   </>
@@ -572,14 +572,14 @@ export function AgentChat({
 
             {/* Done */}
             {state.status === "done" && state.response && (
-              <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4">
+              <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                  <span className="text-sm font-medium text-emerald-400">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                  <span className="text-sm font-medium text-emerald-600">
                     Done
                   </span>
                 </div>
-                <p className="mt-1.5 text-sm text-zinc-400">
+                <p className="mt-1.5 text-sm text-gray-500">
                   {state.response.summary}
                 </p>
               </div>
@@ -589,7 +589,7 @@ export function AgentChat({
       </div>
 
       {/* Input */}
-      <div className="border-t border-border/40 p-4">
+      <div className="border-t border-gray-100 p-4">
         <div className="flex gap-2">
           <Textarea
             placeholder='e.g. "Blast off" to test voice pipeline...'

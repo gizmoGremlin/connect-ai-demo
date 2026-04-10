@@ -106,7 +106,7 @@ export function SkillGrid() {
                       expandedScript === skill.id ? null : skill.id
                     )
                   }
-                  className="flex w-full items-center gap-1.5 px-5 py-2 text-[11px] font-mono text-cyan-400 hover:bg-zinc-800/30 transition-colors"
+                  className="flex w-full items-center gap-1.5 px-5 py-2 text-[11px] font-mono text-emerald-600 hover:bg-gray-50 transition-colors"
                 >
                   <Code2 className="h-3 w-3" />
                   <span>View Script</span>
@@ -117,8 +117,8 @@ export function SkillGrid() {
                   )}
                 </button>
                 {expandedScript === skill.id && (
-                  <div className="border-t border-border/30 bg-zinc-950 px-4 py-3">
-                    <pre className="text-[11px] font-mono leading-relaxed text-zinc-400 overflow-x-auto">
+                  <div className="border-t border-gray-100 bg-gray-50 px-4 py-3">
+                    <pre className="text-[11px] font-mono leading-relaxed text-gray-700 overflow-x-auto">
                       {skill.script}
                     </pre>
                   </div>

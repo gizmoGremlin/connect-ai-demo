@@ -60,7 +60,7 @@ const sections = [
               className="rounded-xl border border-border/60 bg-card/50 p-4"
             >
               <div className="flex items-center gap-3">
-                <part.icon className="h-5 w-5 text-blue-400 shrink-0" />
+                <part.icon className="h-5 w-5 text-blue-500 shrink-0" />
                 <div>
                   <p className="font-medium text-sm">{part.name}</p>
                   <p className="text-xs text-muted-foreground">{part.desc}</p>
@@ -187,7 +187,7 @@ esptool.py --chip esp32s3 --port /dev/ttyUSB0 \\
       <div className="space-y-6">
         <p className="text-muted-foreground">
           Now that your device is connected, let&apos;s write a simple{" "}
-          <code className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-sm text-cyan-400">
+          <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-emerald-600">
             .connect
           </code>{" "}
           script by hand. This is the same language the AI agent generates — learning
@@ -198,12 +198,12 @@ esptool.py --chip esp32s3 --port /dev/ttyUSB0 \\
           <h3 className="text-base font-semibold">Basic Structure</h3>
           <p className="text-sm text-muted-foreground">
             Every script starts with a{" "}
-            <code className="rounded bg-zinc-800 px-1 py-0.5 font-mono text-xs text-cyan-400">
+            <code className="rounded bg-gray-100 px-1 py-0.5 font-mono text-xs text-emerald-600">
               skill
             </code>{" "}
             block that names and wraps your automation:
           </p>
-          <pre className="rounded-xl border border-border/60 bg-zinc-950 p-4 overflow-x-auto text-sm font-mono leading-relaxed text-zinc-300">
+          <pre className="rounded-xl border border-border/60 bg-gray-50 p-4 overflow-x-auto text-sm font-mono leading-relaxed text-gray-700">
 {`skill "My First Skill" {
   // Your commands go here
 }`}
@@ -225,7 +225,7 @@ esptool.py --chip esp32s3 --port /dev/ttyUSB0 \\
                 key={item.cmd}
                 className="rounded-lg border border-border/60 bg-card/50 px-3 py-2"
               >
-                <code className="text-xs font-mono text-cyan-400">
+                <code className="text-xs font-mono text-emerald-600">
                   {item.cmd}
                 </code>
                 <p className="mt-1 text-xs text-muted-foreground">{item.desc}</p>
@@ -236,7 +236,7 @@ esptool.py --chip esp32s3 --port /dev/ttyUSB0 \\
 
         <div className="space-y-4">
           <h3 className="text-base font-semibold">Control Flow</h3>
-          <pre className="rounded-xl border border-border/60 bg-zinc-950 p-4 overflow-x-auto text-sm font-mono leading-relaxed text-zinc-300">
+          <pre className="rounded-xl border border-border/60 bg-gray-50 p-4 overflow-x-auto text-sm font-mono leading-relaxed text-gray-700">
 {`// Repeat a block
 repeat 5 {
   swipe up
@@ -261,7 +261,7 @@ type name`}
             This script opens Safari, navigates to a page, captures it, and
             saves the extracted text to Notes:
           </p>
-          <pre className="rounded-xl border border-cyan-500/20 bg-zinc-950 p-4 overflow-x-auto text-sm font-mono leading-relaxed text-zinc-300">
+          <pre className="rounded-xl border border-emerald-200 bg-gray-50 p-4 overflow-x-auto text-sm font-mono leading-relaxed text-gray-700">
 {`skill "Capture & Save" {
   open app "Safari"
   tap "Search"
@@ -281,7 +281,7 @@ type name`}
           <p className="text-sm text-muted-foreground">
             Upload this to the command center and run it, or share it with the
             community on the{" "}
-            <a href="/skills" className="text-blue-400 hover:underline">
+            <a href="/skills" className="text-blue-500 hover:underline">
               Skills page
             </a>
             .
@@ -355,10 +355,10 @@ export default function CookbookPage() {
 
         {/* Main content */}
         <div>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Cookbook
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
+          <p className="mt-4 text-lg text-gray-500 max-w-2xl">
             Build your own Connect AI device from scratch using off-the-shelf
             components. This guide walks you through every step.
           </p>
@@ -368,7 +368,7 @@ export default function CookbookPage() {
               <section key={section.id} id={section.id}>
                 <div className="flex items-center gap-3">
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-border/60 bg-card">
-                    <section.icon className="h-4 w-4 text-blue-400" />
+                    <section.icon className="h-4 w-4 text-blue-500" />
                   </div>
                   <h2 className="text-xl font-semibold">{section.title}</h2>
                 </div>

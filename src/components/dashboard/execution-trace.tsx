@@ -34,18 +34,18 @@ export function ExecutionTrace({ entries }: { entries: TraceEntry[] }) {
   );
 
   return (
-    <div className="flex h-full flex-col rounded-xl border border-border/60 bg-zinc-950/50">
+    <div className="flex h-full flex-col rounded-xl border border-gray-200 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
       {/* Header */}
-      <div className="flex items-center gap-2 border-b border-border/40 px-4 py-3">
-        <Terminal className="h-4 w-4 text-zinc-500" />
-        <span className="text-sm font-medium text-zinc-300">
+      <div className="flex items-center gap-2 border-b border-gray-100 bg-gray-50/50 px-4 py-3">
+        <Terminal className="h-4 w-4 text-gray-400" />
+        <span className="text-sm font-medium text-gray-700">
           Execution Trace
         </span>
         {entries.some((e) => e.status === "active") && (
-          <Loader2 className="ml-auto h-3.5 w-3.5 animate-spin text-blue-400" />
+          <Loader2 className="ml-auto h-3.5 w-3.5 animate-spin text-blue-500" />
         )}
         {hasResult && (
-          <CheckCircle2 className="ml-auto h-3.5 w-3.5 text-emerald-400" />
+          <CheckCircle2 className="ml-auto h-3.5 w-3.5 text-emerald-500" />
         )}
       </div>
 
@@ -56,8 +56,8 @@ export function ExecutionTrace({ entries }: { entries: TraceEntry[] }) {
       >
         {entries.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center py-16">
-            <Terminal className="h-8 w-8 text-zinc-700" />
-            <p className="mt-3 text-sm text-zinc-600">
+            <Terminal className="h-8 w-8 text-gray-300" />
+            <p className="mt-3 text-sm text-gray-400">
               Run a skill to see the execution trace here.
             </p>
           </div>
@@ -67,12 +67,12 @@ export function ExecutionTrace({ entries }: { entries: TraceEntry[] }) {
 
         {/* Screenshot placeholder */}
         {hasResult && (
-          <div className="mt-4 rounded-lg border border-dashed border-zinc-700/60 bg-zinc-900/30 p-4 text-center">
-            <ImageIcon className="mx-auto h-6 w-6 text-zinc-600" />
-            <p className="mt-2 text-xs text-zinc-600">
+          <div className="mt-4 rounded-lg border border-dashed border-gray-200 bg-gray-50 p-4 text-center">
+            <ImageIcon className="mx-auto h-6 w-6 text-gray-300" />
+            <p className="mt-2 text-xs text-gray-400">
               Screenshot (hardware required)
             </p>
-            <p className="mt-1 text-[10px] text-zinc-700">
+            <p className="mt-1 text-[10px] text-gray-300">
               In production, the device captures and returns the phone screen
               here.
             </p>
@@ -93,14 +93,14 @@ function TraceRow({ entry }: { entry: TraceEntry }) {
         <div className="flex items-start gap-2">
           <div className="mt-0.5 shrink-0">
             {isActive ? (
-              <Brain className="h-3.5 w-3.5 text-purple-400 animate-pulse" />
+              <Brain className="h-3.5 w-3.5 text-violet-500 animate-pulse" />
             ) : (
-              <Brain className="h-3.5 w-3.5 text-purple-400/50" />
+              <Brain className="h-3.5 w-3.5 text-violet-300" />
             )}
           </div>
           <p
             className={`text-xs italic leading-relaxed ${
-              isActive ? "text-zinc-400" : "text-zinc-600"
+              isActive ? "text-gray-600" : "text-gray-400"
             }`}
           >
             {entry.content}
@@ -113,20 +113,20 @@ function TraceRow({ entry }: { entry: TraceEntry }) {
         <div className="flex items-start gap-2">
           <div className="mt-0.5 shrink-0">
             {isDone ? (
-              <CheckCircle2 className="h-3.5 w-3.5 text-blue-400" />
+              <CheckCircle2 className="h-3.5 w-3.5 text-blue-500" />
             ) : isActive ? (
-              <ListOrdered className="h-3.5 w-3.5 text-blue-400 animate-pulse" />
+              <ListOrdered className="h-3.5 w-3.5 text-blue-500 animate-pulse" />
             ) : (
-              <ListOrdered className="h-3.5 w-3.5 text-zinc-600" />
+              <ListOrdered className="h-3.5 w-3.5 text-gray-300" />
             )}
           </div>
           <p
             className={`text-xs font-mono ${
               isDone
-                ? "text-zinc-500"
+                ? "text-gray-400"
                 : isActive
-                  ? "text-zinc-300"
-                  : "text-zinc-600"
+                  ? "text-gray-700"
+                  : "text-gray-300"
             }`}
           >
             {entry.content}
@@ -139,20 +139,20 @@ function TraceRow({ entry }: { entry: TraceEntry }) {
         <div className="flex items-start gap-2">
           <div className="mt-0.5 shrink-0">
             {isDone ? (
-              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
             ) : isActive ? (
-              <Loader2 className="h-3.5 w-3.5 text-blue-400 animate-spin" />
+              <Loader2 className="h-3.5 w-3.5 text-blue-500 animate-spin" />
             ) : (
-              <Zap className="h-3.5 w-3.5 text-zinc-600" />
+              <Zap className="h-3.5 w-3.5 text-gray-300" />
             )}
           </div>
           <p
             className={`text-xs font-medium ${
               isDone
-                ? "text-zinc-500"
+                ? "text-gray-400"
                 : isActive
-                  ? "text-blue-300"
-                  : "text-zinc-600"
+                  ? "text-blue-600"
+                  : "text-gray-300"
             }`}
           >
             {entry.content}
@@ -162,20 +162,20 @@ function TraceRow({ entry }: { entry: TraceEntry }) {
 
     case "result":
       return (
-        <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-3 py-2">
+        <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-3 py-2">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
-            <p className="text-xs text-emerald-300">{entry.content}</p>
+            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+            <p className="text-xs text-emerald-700">{entry.content}</p>
           </div>
         </div>
       );
 
     case "error":
       return (
-        <div className="rounded-lg border border-red-500/20 bg-red-500/5 px-3 py-2">
+        <div className="rounded-lg border border-red-200 bg-red-50/60 px-3 py-2">
           <div className="flex items-center gap-2">
-            <AlertCircle className="h-3.5 w-3.5 text-red-400 shrink-0" />
-            <p className="text-xs text-red-300">{entry.content}</p>
+            <AlertCircle className="h-3.5 w-3.5 text-red-500 shrink-0" />
+            <p className="text-xs text-red-700">{entry.content}</p>
           </div>
         </div>
       );

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Zap } from "lucide-react";
 
 const footerLinks = [
   {
@@ -7,7 +6,7 @@ const footerLinks = [
     links: [
       { href: "/skills", label: "Skills" },
       { href: "/cookbook", label: "Cookbook" },
-      { href: "#", label: "Pricing" },
+      { href: "/#pricing", label: "Pricing" },
     ],
   },
   {
@@ -27,29 +26,47 @@ const footerLinks = [
   },
 ];
 
+function ConnectLogo() {
+  return (
+    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gray-900">
+      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="white">
+        <rect x="4" y="1" width="4" height="4" rx="0.5" />
+        <rect x="1" y="6" width="4" height="4" rx="0.5" />
+        <rect x="4" y="11" width="4" height="4" rx="0.5" />
+      </svg>
+    </div>
+  );
+}
+
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <footer className="border-t border-gray-100 bg-gray-50/50">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight">
-              <Zap className="h-5 w-5 text-blue-500" />
+            <Link
+              href="/"
+              className="flex items-center gap-2.5 font-semibold text-[15px] tracking-tight text-gray-900"
+            >
+              <ConnectLogo />
               Connect AI
             </Link>
-            <p className="mt-3 text-sm text-muted-foreground max-w-xs">
-              An AI assistant that operates your iPhone. No jailbreak required. Open source and community-driven.
+            <p className="mt-4 text-[13px] text-gray-500 leading-relaxed max-w-xs">
+              An AI assistant that operates your iPhone. No jailbreak required.
+              Open source and community-driven.
             </p>
           </div>
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h3 className="text-sm font-semibold">{section.title}</h3>
-              <ul className="mt-3 space-y-2">
+              <h3 className="text-[13px] font-semibold text-gray-900">
+                {section.title}
+              </h3>
+              <ul className="mt-4 space-y-3">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-[13px] text-gray-500 transition-colors hover:text-gray-900"
                     >
                       {link.label}
                     </Link>
@@ -59,8 +76,8 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 border-t border-border/40 pt-8">
-          <p className="text-center text-xs text-muted-foreground">
+        <div className="mt-12 border-t border-gray-100 pt-8">
+          <p className="text-center text-[12px] text-gray-400">
             &copy; {new Date().getFullYear()} Connect AI. All rights reserved.
           </p>
         </div>

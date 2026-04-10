@@ -60,8 +60,8 @@ function SidebarNav() {
             href={`/dashboard?tab=${tab.id}`}
             className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
               isActive
-                ? "bg-secondary text-foreground"
-                : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
+                ? "bg-white text-gray-900 shadow-[0_1px_2px_rgba(0,0,0,0.04)] border border-gray-200"
+                : "text-gray-500 hover:bg-white/60 hover:text-gray-900"
             }`}
           >
             <tab.icon className="h-4 w-4" />
@@ -118,9 +118,9 @@ export default function DashboardLayout({
   return (
     <div className="flex min-h-[calc(100vh-4rem)]">
       {/* Sidebar */}
-      <aside className="hidden w-64 shrink-0 border-r border-border/40 bg-card/30 md:flex md:flex-col">
+      <aside className="hidden w-64 shrink-0 border-r border-gray-100 bg-gray-50/50 md:flex md:flex-col">
         <div className="p-6 pb-0">
-          <div className="text-sm text-muted-foreground">{user?.email}</div>
+          <div className="text-sm text-gray-500">{user?.email}</div>
         </div>
 
         {/* LLM Picker */}
@@ -128,13 +128,13 @@ export default function DashboardLayout({
           <div className="relative">
             <button
               onClick={() => setLlmDropdownOpen(!llmDropdownOpen)}
-              className="flex w-full items-center justify-between rounded-lg border border-border/60 bg-zinc-900/50 px-3 py-2 text-sm transition-colors hover:border-zinc-600"
+              className="flex w-full items-center justify-between rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm transition-colors hover:border-gray-300"
             >
               <div className="flex items-center gap-2 min-w-0">
-                <Sparkles className="h-3.5 w-3.5 text-blue-400 shrink-0" />
-                <span className="truncate">{currentLlm.name}</span>
+                <Sparkles className="h-3.5 w-3.5 text-blue-500 shrink-0" />
+                <span className="truncate text-gray-900">{currentLlm.name}</span>
               </div>
-              <ChevronDown className={`h-3.5 w-3.5 text-zinc-500 shrink-0 transition-transform ${llmDropdownOpen ? "rotate-180" : ""}`} />
+              <ChevronDown className={`h-3.5 w-3.5 text-gray-400 shrink-0 transition-transform ${llmDropdownOpen ? "rotate-180" : ""}`} />
             </button>
 
             {llmDropdownOpen && (
@@ -143,7 +143,7 @@ export default function DashboardLayout({
                   className="fixed inset-0 z-10"
                   onClick={() => setLlmDropdownOpen(false)}
                 />
-                <div className="absolute left-0 right-0 top-full z-20 mt-1 rounded-lg border border-border/60 bg-zinc-900 shadow-xl">
+                <div className="absolute left-0 right-0 top-full z-20 mt-1 rounded-lg border border-gray-200 bg-white shadow-lg">
                   {llms.map((llm) => (
                     <button
                       key={llm.id}
@@ -151,15 +151,15 @@ export default function DashboardLayout({
                         setActiveLlm(llm.id);
                         setLlmDropdownOpen(false);
                       }}
-                      className="flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-zinc-800 first:rounded-t-lg transition-colors"
+                      className="flex w-full items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 first:rounded-t-lg transition-colors"
                     >
-                      <Sparkles className="h-3 w-3 text-blue-400 shrink-0" />
+                      <Sparkles className="h-3 w-3 text-blue-500 shrink-0" />
                       <span className="truncate flex-1 text-left">{llm.name}</span>
                       {llm.isDefault && (
-                        <span className="text-[10px] text-zinc-500 shrink-0">default</span>
+                        <span className="text-[10px] text-gray-400 shrink-0">default</span>
                       )}
                       {llm.id === activeLlm && (
-                        <Check className="h-3 w-3 text-blue-400 shrink-0" />
+                        <Check className="h-3 w-3 text-blue-500 shrink-0" />
                       )}
                     </button>
                   ))}
@@ -168,7 +168,7 @@ export default function DashboardLayout({
                       setLlmDropdownOpen(false);
                       setAddLlmOpen(true);
                     }}
-                    className="flex w-full items-center gap-2 border-t border-border/40 px-3 py-2 text-sm text-muted-foreground hover:bg-zinc-800 hover:text-foreground last:rounded-b-lg transition-colors"
+                    className="flex w-full items-center gap-2 border-t border-gray-100 px-3 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900 last:rounded-b-lg transition-colors"
                   >
                     <Plus className="h-3 w-3" />
                     Add LLM
@@ -187,7 +187,7 @@ export default function DashboardLayout({
           <Button
             variant="ghost"
             size="sm"
-            className="w-full justify-start gap-2 text-muted-foreground"
+            className="w-full justify-start gap-2 text-gray-500 hover:text-gray-900"
             onClick={() => {
               logout();
               router.push("/");
@@ -207,7 +207,7 @@ export default function DashboardLayout({
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Key className="h-4 w-4 text-blue-400" />
+              <Key className="h-4 w-4 text-blue-500" />
               Add LLM Provider
             </DialogTitle>
           </DialogHeader>
@@ -222,8 +222,8 @@ export default function DashboardLayout({
                     onClick={() => setNewLlmProvider(p)}
                     className={`rounded-lg border px-3 py-2 text-sm transition-colors ${
                       newLlmProvider === p
-                        ? "border-blue-500/40 bg-blue-500/10 text-foreground"
-                        : "border-border/60 text-muted-foreground hover:border-zinc-600"
+                        ? "border-blue-500/60 bg-blue-50 text-blue-700"
+                        : "border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700"
                     }`}
                   >
                     {p}

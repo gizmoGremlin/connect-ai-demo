@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X, Zap } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { useAuth } from "@/lib/mock-auth";
 import { cn } from "@/lib/utils";
@@ -10,20 +10,39 @@ import { cn } from "@/lib/utils";
 const links = [
   { href: "/skills", label: "Skills" },
   { href: "/cookbook", label: "Cookbook" },
+  { href: "/#pricing", label: "Pricing" },
   { href: "#", label: "GitHub" },
-  { href: "#", label: "Discord" },
 ];
+
+function ConnectLogo({ size = 28 }: { size?: number }) {
+  return (
+    <div
+      className="flex items-center justify-center rounded-lg bg-gray-900"
+      style={{ height: size, width: size }}
+    >
+      <svg
+        viewBox="0 0 16 16"
+        className="fill-white"
+        style={{ height: size * 0.5, width: size * 0.5 }}
+      >
+        <rect x="4" y="1" width="4" height="4" rx="0.5" />
+        <rect x="1" y="6" width="4" height="4" rx="0.5" />
+        <rect x="4" y="11" width="4" height="4" rx="0.5" />
+      </svg>
+    </div>
+  );
+}
 
 function CtrlCenterButton({ className }: { className?: string }) {
   return (
     <Link
       href="/dashboard"
       className={cn(
-        "group relative inline-flex items-center gap-1.5 rounded-[5px] border border-zinc-500/60 bg-gradient-to-b from-zinc-600 to-zinc-700 px-3 py-1.5 text-xs font-medium text-zinc-200 shadow-[0_2px_0_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.08)] transition-all hover:from-zinc-500 hover:to-zinc-600 hover:text-white active:translate-y-px active:shadow-[0_1px_0_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.08)]",
+        "group relative inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-[13px] font-medium text-gray-700 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all hover:border-gray-300 hover:bg-gray-50 hover:text-gray-900 active:translate-y-px",
         className
       )}
     >
-      <span className="inline-flex items-center justify-center rounded-[3px] border border-zinc-400/30 bg-zinc-500/40 px-1 py-px font-mono text-[10px] leading-none text-zinc-300 shadow-[inset_0_-1px_0_0_rgba(0,0,0,0.2)]">
+      <span className="inline-flex items-center justify-center rounded-[4px] border border-gray-200 bg-gray-50 px-1 py-px font-mono text-[10px] leading-none text-gray-500">
         ctrl
       </span>
       <span className="tracking-wide">Center</span>
@@ -33,13 +52,31 @@ function CtrlCenterButton({ className }: { className?: string }) {
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { isAuthenticated } = useAuth();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight">
-          <Zap className="h-5 w-5 text-blue-500" />
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-300",
+        scrolled
+          ? "bg-white/90 backdrop-blur-xl border-b border-gray-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+          : "bg-white/60 backdrop-blur-sm border-b border-transparent"
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 font-semibold text-[15px] tracking-tight text-gray-900"
+        >
+          <ConnectLogo />
           Connect AI
         </Link>
 
@@ -48,7 +85,7 @@ export function Navbar() {
             <Link
               key={l.label}
               href={l.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-[13px] font-medium text-gray-500 transition-colors hover:text-gray-900"
             >
               {l.label}
             </Link>
@@ -62,13 +99,16 @@ export function Navbar() {
             <>
               <Link
                 href="/login"
-                className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+                className="text-[13px] font-medium text-gray-500 transition-colors hover:text-gray-900"
               >
                 Log In
               </Link>
               <Link
                 href="/signup"
-                className={cn(buttonVariants({ size: "sm" }))}
+                className={cn(
+                  buttonVariants({ size: "sm" }),
+                  "rounded-lg bg-gray-900 text-white hover:bg-gray-800 text-[13px] h-9 px-4"
+                )}
               >
                 Get Started
               </Link>
@@ -77,7 +117,7 @@ export function Navbar() {
         </div>
 
         <button
-          className="md:hidden p-2 text-muted-foreground"
+          className="md:hidden p-2 text-gray-500 cursor-pointer"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -86,32 +126,37 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-border/40 bg-background px-4 pb-6 pt-4 md:hidden">
+        <div className="border-t border-gray-200/60 bg-white/95 backdrop-blur-xl px-4 pb-6 pt-4 md:hidden">
           <nav className="flex flex-col gap-4">
             {links.map((l) => (
               <Link
                 key={l.label}
                 href={l.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm text-gray-500 transition-colors hover:text-gray-900"
                 onClick={() => setOpen(false)}
               >
                 {l.label}
               </Link>
             ))}
-            <div className="flex flex-col gap-2 pt-4 border-t border-border/40">
+            <div className="flex flex-col gap-2 pt-4 border-t border-gray-200/60">
               {isAuthenticated ? (
                 <CtrlCenterButton />
               ) : (
                 <>
                   <Link
                     href="/login"
-                    className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+                    className="text-sm text-gray-500 transition-colors hover:text-gray-900"
+                    onClick={() => setOpen(false)}
                   >
                     Log In
                   </Link>
                   <Link
                     href="/signup"
-                    className={cn(buttonVariants({ size: "sm" }))}
+                    className={cn(
+                      buttonVariants({ size: "sm" }),
+                      "rounded-lg bg-gray-900 text-white hover:bg-gray-800"
+                    )}
+                    onClick={() => setOpen(false)}
                   >
                     Get Started
                   </Link>

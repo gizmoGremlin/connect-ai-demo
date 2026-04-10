@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/lib/mock-auth";
@@ -25,11 +24,15 @@ export default function SignupPage() {
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="flex flex-col items-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border/60 bg-card">
-            <Zap className="h-6 w-6 text-blue-500" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-900">
+            <svg viewBox="0 0 16 16" className="h-6 w-6" fill="white">
+              <rect x="4" y="1" width="4" height="4" rx="0.5" />
+              <rect x="1" y="6" width="4" height="4" rx="0.5" />
+              <rect x="4" y="11" width="4" height="4" rx="0.5" />
+            </svg>
           </div>
-          <h1 className="mt-6 text-2xl font-bold">Create an account</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <h1 className="mt-6 text-2xl font-bold text-gray-900">Create an account</h1>
+          <p className="mt-2 text-sm text-gray-500">
             Get started with Connect AI
           </p>
         </div>
@@ -75,7 +78,7 @@ export default function SignupPage() {
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
           Already have an account?{" "}
-          <Link href="/login" className="text-blue-400 hover:underline">
+          <Link href="/login" className="text-blue-500 hover:underline">
             Log in
           </Link>
         </p>

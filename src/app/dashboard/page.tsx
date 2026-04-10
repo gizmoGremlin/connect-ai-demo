@@ -74,33 +74,33 @@ function DashboardContent() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
         <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-border/60 bg-card">
-          <CreditCard className="h-8 w-8 text-blue-400" />
+          <CreditCard className="h-8 w-8 text-blue-500" />
         </div>
         <h1 className="mt-6 text-2xl font-bold">Subscribe to Access</h1>
         <p className="mt-3 max-w-md text-muted-foreground">
           Unlock the command center, device management, and skill execution with
           a Connect AI Cloud subscription.
         </p>
-        <div className="mt-8 rounded-2xl border border-blue-500/30 bg-blue-500/5 p-8 w-full max-w-sm">
+        <div className="mt-8 rounded-2xl border border-blue-200 bg-blue-50/50 p-8 w-full max-w-sm">
           <div className="flex items-baseline justify-center gap-1">
             <span className="text-4xl font-bold">$5</span>
             <span className="text-muted-foreground">/month</span>
           </div>
           <ul className="mt-6 space-y-2 text-sm text-left">
             <li className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+              <div className="h-1.5 w-1.5 rounded-full bg-blue-500" />
               AI agent in the ctrl center
             </li>
             <li className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+              <div className="h-1.5 w-1.5 rounded-full bg-blue-500" />
               Natural language task delegation
             </li>
             <li className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+              <div className="h-1.5 w-1.5 rounded-full bg-blue-500" />
               Multi-device management
             </li>
             <li className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+              <div className="h-1.5 w-1.5 rounded-full bg-blue-500" />
               Community skills marketplace
             </li>
           </ul>
@@ -119,7 +119,7 @@ function DashboardContent() {
         <>
           <div>
             <h1 className="text-2xl font-bold flex items-center gap-2">
-              <span className="inline-flex items-center justify-center rounded-[4px] border border-zinc-500/60 bg-gradient-to-b from-zinc-600 to-zinc-700 px-1.5 py-0.5 font-mono text-sm leading-none text-zinc-300 shadow-[0_2px_0_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.08)]">
+              <span className="inline-flex items-center justify-center rounded-[4px] border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-sm leading-none text-gray-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                 ctrl
               </span>
               Center
@@ -253,11 +253,11 @@ function DashboardContent() {
 
           {/* Blast Off — featured skill */}
           {blastOffSkill && (
-            <div className="rounded-xl border border-blue-500/20 bg-card/50 p-6">
+            <div className="rounded-xl border border-blue-200 bg-white p-6">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10">
-                    <Rocket className="h-5 w-5 text-blue-400" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50">
+                    <Rocket className="h-5 w-5 text-blue-500" />
                   </div>
                   <div>
                     <h3 className="font-semibold flex items-center gap-2">
@@ -275,7 +275,7 @@ function DashboardContent() {
               </div>
 
               {/* Script preview */}
-              <pre className="mt-4 rounded-lg border border-border/40 bg-zinc-950 p-3 text-xs font-mono leading-relaxed text-zinc-400 overflow-x-auto">
+              <pre className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-3 text-xs font-mono leading-relaxed text-gray-700 overflow-x-auto">
                 {`skill "Blast Off" {\n  connect voice_ai\n  generate_tts "Take screenshot"\n  play_audio output\n  wait_for_response 5s\n  capture_result\n}`}
               </pre>
 
@@ -311,7 +311,7 @@ function DashboardContent() {
           <Card className="bg-card/50 max-w-lg">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <CreditCard className="h-5 w-5 text-blue-400" />
+                <CreditCard className="h-5 w-5 text-blue-500" />
                 Cloud Plan
               </CardTitle>
             </CardHeader>
@@ -320,31 +320,31 @@ function DashboardContent() {
                 <span className="text-3xl font-bold">$5</span>
                 <span className="text-muted-foreground">/month</span>
               </div>
-              <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-3 py-2">
-                <div className="flex items-center gap-2 text-sm text-emerald-400">
+              <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 px-3 py-2">
+                <div className="flex items-center gap-2 text-sm text-emerald-600">
                   <Check className="h-4 w-4" />
                   Active
                 </div>
               </div>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2">
-                  <Check className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                  <Check className="h-3.5 w-3.5 text-blue-500 shrink-0" />
                   AI agent in the ctrl center
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                  <Check className="h-3.5 w-3.5 text-blue-500 shrink-0" />
                   Natural language task delegation
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                  <Check className="h-3.5 w-3.5 text-blue-500 shrink-0" />
                   Multi-device management
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                  <Check className="h-3.5 w-3.5 text-blue-500 shrink-0" />
                   Community skills marketplace
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                  <Check className="h-3.5 w-3.5 text-blue-500 shrink-0" />
                   Bring your own LLM
                 </li>
               </ul>
