@@ -17,7 +17,7 @@ if (!FAL_KEY) {
 const fal = createFalClient({ credentials: FAL_KEY });
 const BENTO_DIR = resolve(__dirname, "../public/generated/bento");
 
-const TARGETS = ["01-hand-phone", "02-beauty-shot", "06-cable-macro"];
+const TARGETS = ["03-connect-scripts", "05-community"];
 
 async function upscale(name: string) {
   const inPath = resolve(BENTO_DIR, `${name}.png`);

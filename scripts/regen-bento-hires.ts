@@ -38,22 +38,16 @@ type Scene = {
 // a bright white background since the previous versions came out moody.
 const scenes: Scene[] = [
   {
-    name: "01-hand-phone",
+    name: "03-connect-scripts",
     width: 1600,
     height: 1200,
-    prompt: `A person's hand holding an iPhone face-up against a pure white seamless studio background. The phone screen shows a clean LIGHT-mode chat interface (white background, soft gray bubbles) — NOT a dark theme. The back of the phone has ${PRODUCT} The hand grips naturally from the side, the brushed aluminum plate clearly visible along the back edge. Bright soft natural lighting, no harsh shadows. The entire scene is light and airy, primarily white. Editorial Apple-style product lifestyle photography. White background dominates the frame.`,
+    prompt: `A laptop screen displaying a clean code editor with .connect script syntax — colored keywords like "tap", "swipe", "wait", "screenshot" visible. The editor uses a LIGHT theme: white background, dark text, subtle syntax highlighting in pastel colors. The laptop sits on a clean white desk against a pure white seamless background. Bright soft studio lighting, no shadows. The entire frame is dominated by white. Apple keynote aesthetic, editorial product photography, light and airy, minimal. NOT dark mode, NOT moody, NOT black — pure white background everywhere.`,
   },
   {
-    name: "02-beauty-shot",
+    name: "05-community",
     width: 1600,
     height: 1200,
-    prompt: `Premium product beauty shot of the iPhone with the aluminum device, photographed on a clean pure white seamless studio surface. ${PRODUCT} Bright soft studio lighting with subtle shadows. The brushed aluminum texture catches the light beautifully. Pure white background, white surface, light and airy. Apple keynote aesthetic — primarily white, minimal, premium. NOT moody, NOT dark, NOT black. Editorial product photography with lots of negative space.`,
-  },
-  {
-    name: "06-cable-macro",
-    width: 1600,
-    height: 1200,
-    prompt: `Extreme macro close-up of a USB-C cable plugging into the bottom of an iPhone, photographed against a pure white seamless background. ${PRODUCT} The aluminum device plate is visible on the back of the phone above the port. Focus on the physical USB-C connection point. Bright soft studio lighting, crisp details, shallow depth of field. The image emphasizes a direct physical local connection — no wireless, no cloud. Pure white background dominates the frame. Premium clean product detail photography. NOT dark, NOT moody — light and airy.`,
+    prompt: `An overhead flat-lay of multiple iPhones arranged in a clean grid on a pure white seamless surface. Each iPhone is face-up displaying a different LIGHT-mode app screen (light theme — photo gallery, shopping list, social feed, maps) — all screens are bright and white-themed, NOT dark. ${PRODUCT} Bright soft studio lighting from above, no harsh shadows. Pure white background, white surface, primarily white frame. Apple-style editorial product flat-lay photography. Lots of negative space. Light, airy, minimal. NOT dark, NOT moody.`,
   },
 ];
 
