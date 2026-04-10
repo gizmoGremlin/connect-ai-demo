@@ -27,8 +27,8 @@ export default function Home() {
       <FeatureBento />
       <AiCapabilities />
       <OpenScripts />
-      <UseCases />
       <HowItWorksV2 />
+      <UseCases />
       <Testimonials />
       <Specs />
       <PricingV2 />
