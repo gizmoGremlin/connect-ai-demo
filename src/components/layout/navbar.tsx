@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Brain } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { useAuth } from "@/lib/mock-auth";
 import { cn } from "@/lib/utils";
@@ -107,10 +107,11 @@ export function Navbar() {
                 href="/signup"
                 className={cn(
                   buttonVariants({ size: "sm" }),
-                  "rounded-lg bg-gray-900 text-white hover:bg-gray-800 text-[13px] h-9 px-4"
+                  "gap-1.5 rounded-lg bg-gray-900 text-white hover:bg-gray-800 text-[13px] h-9 px-4"
                 )}
               >
-                Get Started
+                <Brain className="h-4 w-4" strokeWidth={1.75} />
+                Cmd Center
               </Link>
             </>
           )}
@@ -154,11 +155,12 @@ export function Navbar() {
                     href="/signup"
                     className={cn(
                       buttonVariants({ size: "sm" }),
-                      "rounded-lg bg-gray-900 text-white hover:bg-gray-800"
+                      "gap-1.5 rounded-lg bg-gray-900 text-white hover:bg-gray-800"
                     )}
                     onClick={() => setOpen(false)}
                   >
-                    Get Started
+                    <Brain className="h-4 w-4" strokeWidth={1.75} />
+                    Cmd Center
                   </Link>
                 </>
               )}
