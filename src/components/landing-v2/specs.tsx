@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionHeader } from "./section-header";
+import { VideoWithSkeleton } from "./video-with-skeleton";
 
 const specs = [
   { label: "Connection", value: "USB-C + MagSafe" },
@@ -26,16 +27,14 @@ export function Specs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="overflow-hidden rounded-2xl border border-gray-100">
-              <video
-                src="/generated/video/seedance-r5/r5-undock-full.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full"
-              />
-            </div>
+            <VideoWithSkeleton
+              wrapperClassName="aspect-video rounded-2xl border border-gray-100"
+              src="/generated/video/seedance-r5/r5-undock-full.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
           </motion.div>
 
           {/* Specs list */}

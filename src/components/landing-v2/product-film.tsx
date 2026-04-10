@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { SectionHeader } from "./section-header";
+import { VideoWithSkeleton } from "./video-with-skeleton";
 
 export function ProductFilm() {
   return (
@@ -39,15 +40,16 @@ export function ProductFilm() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative aspect-video overflow-hidden rounded-2xl border border-gray-200 shadow-lg shadow-gray-200/40"
+              className="relative"
             >
-              <video
+              <VideoWithSkeleton
+                wrapperClassName="aspect-video rounded-2xl border border-gray-200 shadow-lg shadow-gray-200/40"
                 src="/generated/video/product-film/placeholder.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="h-full w-full object-cover"
+                className="object-cover"
               />
 
               {/* Decorative play-button overlay */}

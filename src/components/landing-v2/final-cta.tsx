@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { VideoWithSkeleton } from "./video-with-skeleton";
 
 export function FinalCta() {
   return (
@@ -29,16 +30,14 @@ export function FinalCta() {
           className="flex flex-col items-center text-center"
         >
           {/* Mini product video */}
-          <div className="w-56 sm:w-64 overflow-hidden rounded-xl border border-gray-200/60 shadow-lg shadow-gray-200/40">
-            <video
-              src="/generated/video/seedance-r5/r5-spin-reveal.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full"
-            />
-          </div>
+          <VideoWithSkeleton
+            wrapperClassName="w-56 sm:w-64 aspect-video rounded-xl border border-gray-200/60 shadow-lg shadow-gray-200/40"
+            src="/generated/video/seedance-r5/r5-spin-reveal.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
 
           <h2 className="mt-10 text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-5xl">
             Stop Scrolling.

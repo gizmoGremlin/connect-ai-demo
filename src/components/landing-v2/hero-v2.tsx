@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { VideoWithSkeleton } from "./video-with-skeleton";
 
 export function HeroV2() {
   return (
@@ -37,16 +38,14 @@ export function HeroV2() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="relative w-full max-w-5xl"
         >
-          <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-200/40 shadow-2xl shadow-gray-300/30">
-            <video
-              src="/generated/video/seedance-r5/r5-fast-cuts.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full block"
-            />
-          </div>
+          <VideoWithSkeleton
+            wrapperClassName="aspect-video rounded-2xl sm:rounded-3xl border border-gray-200/40 shadow-2xl shadow-gray-300/30"
+            src="/generated/video/seedance-r5/r5-fast-cuts.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
           <div className="absolute -inset-6 -z-10 rounded-[3rem] bg-gradient-to-b from-brand-subtle/60 via-transparent to-transparent blur-2xl" />
         </motion.div>
       </div>
